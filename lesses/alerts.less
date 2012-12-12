@@ -1,0 +1,23 @@
+.alert{
+  margin-bottom: 5px;
+  padding: 10px;
+  .box-shadow(@alert_box_shadow);
+  .border-radius(4px);
+  .relative;
+
+  color: @alert_link_color;
+  background-color: @alert_background_color;
+  border: 1px solid @alert_border_color;
+
+  &.error{
+    color: @alert_error_link_color;
+    background-color: @alert_error_background_color;
+    border-color: @alert_error_border_color;
+  }
+  &.success{
+    color: @alert_success_link_color;
+    background-color: @alert_success_background_color;
+    border-color: @alert_success_border_color;
+  }
+
+}

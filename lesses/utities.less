@@ -1,0 +1,98 @@
+// float
+.pull-left{
+  float: left;
+}
+.pull-right{
+  float: right;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.inline-block{
+  display: inline-block;
+}
+
+// position
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+.fixed{
+  position: fixed;
+}
+
+
+// caret
+.caret{
+  &.black{
+    .caret-full;
+  }
+  &.white{
+    .caret-full(@white)
+  }
+}
+
+// close
+.close{
+  .absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 9px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: black;
+  text-shadow: 0 1px 0 white;
+  .opacity(20);
+  font-family: @en_font_family;
+
+  &:hover {
+    .opacity(40);
+    text-decoration: none;
+  }
+}
+
+// help
+.help{
+  .inline-block;
+  vertical-align: middle;
+  padding-left: 5px;
+
+  &.block{
+    padding-top: 5px;
+    .show;
+  }
+}
+
+//
+.logo{
+  .pull-left;
+  .show;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+  padding-top: 10px;
+  margin-right: 10px;
+}
+
+// width
+.w60{
+  width: 60px;
+}
+.w80{
+  width: 80px;
+}
+.w100{
+  width: 100px;
+}
+.w120{
+  width: 120px;
+}

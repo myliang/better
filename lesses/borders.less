@@ -1,0 +1,48 @@
+// borders.less
+.module, .items, .popup{
+  background-color: @white;
+  &.border{
+    .border-radius-shadow(@base_border_color);
+  }
+}
+.nav.stacked{
+  .border-radius-shadow(@base_border_color);
+}
+
+.nav.tabs,
+.nav.stacked >li >a,
+.module >.header,
+.popup >.header,
+.items >.item{
+  border-bottom: 1px solid @base_border_color;
+}
+
+.nav.stretched{
+  border-top: 1px solid @base_border_color;
+  border-bottom: 1px solid @base_border_color;
+}
+
+.nav.stretched >li >a{
+  border-left: 1px solid @base_border_color;
+}
+
+.nav.stretched >li:first-child >a{
+  border-left: none;
+}
+.nav.tabs >li.active{
+  >a, >a:hover {
+    border: 1px solid @base_border_color;
+    border-bottom-color: transparent;
+  }
+}
+.nav.tabs >li >a{
+  border: 1px solid transparent;
+  &:hover {
+    border-bottom: 1px solid @base_border_color;
+  }
+}
+
+.nav.stacked >li:last-child >a,
+.items >.item:last-child {
+  border-bottom: none;
+}

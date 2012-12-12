@@ -1,0 +1,35 @@
+// arrow
+.arrow-tip, .arrow-popup{
+  z-index: @arrow_zindex;
+}
+
+.arrow-popup{
+  .arrow-full;
+}
+
+.arrow-tip{
+  &.left{
+    &:before{
+      .arrow-left(@arrow_border_width, @arrow_tip_border_color);
+      bottom: 50%;
+    }
+  }
+  &.right{
+    &:before{
+      .arrow-right(@arrow_border_width, @arrow_tip_border_color);
+      bottom: 50%;
+    }
+  }
+  &.top{
+    &:before{
+      .arrow-top(@arrow_border_width, @arrow_tip_border_color);
+      left: 50%;
+    }
+  }
+  &.bottom{
+    &:before{
+      .arrow-bottom(@arrow_border_width, @arrow_tip_border_color);
+      left: 50%;
+    }
+  }
+}

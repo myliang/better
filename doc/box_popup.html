@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+  <link rel="stylesheet" href="../csses/application.css" type="text/css" media="screen">
+  <script type="text/javascript" src="../javascripts/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="../javascripts/utils.js"></script>
+  <script type="text/javascript" src="../javascripts/jquery.popup.js"></script>
+  <script type="text/javascript" src="../javascripts/jquery.tip.js"></script>
+  <script type="text/javascript" src="../javascripts/jquery.menu.js"></script>
+  <script type="text/javascript" src="../javascripts/jquery.form.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $('.tooltip').tip();
+      $('.js-popup').popup();
+      $('.js-menu').menu();
+      $('.js-submit').form();
+//      $('.tooltip_left').tip({direction: "left"});
+//      $('.tooltip_right').tip({direction: "right"});
+//      $('.tooltip_bottom').tip({direction: "bottom"});
+//      $('.tooltip_top').tip({direction: "top"});
+    });
+  </script>
+</head>
+<body>
+  <div class="box-outer" style="width: 400px; margin: 10px">
+    <div class="popup border">
+      <a class="close">&times;</a>
+      <div class="header">
+        <h4 class="title">Tip information</h4>
+      </div>
+      <div class="body">
+        确定要删除吗？
+      </div>
+      <div class="footer">
+        <button class="btn">确定</button>
+      </div>
+    </div>
+  </div>
+<div style="width: 400px; margin: 10px; margin-left: 20px;">
+  <div class="module border">
+    <h4 class="header">Tags</h4>
+    <div class="body">
+    <ul class="nav pills">
+      <li class="active"><a href="#">首页</a></li>
+      <li><a href="#">谅解</a></li>
+      <li><a href="#">发现</a></li>
+      <li><a href="#">Love</a></li>
+      <li class="menu-outer">
+        <a href="#" class="js-menu">Girl <span class="caret black down"></span></a>
+        <ul class="menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Other Action</a></li>
+          <li><a href="#">hhh Action</a></li>
+          <li class="divider"></li>
+          <li><a href="#">More</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  </div>
+
+  <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+  <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+  <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+  <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+
+  <a href="#" class="js-popup" data-title="Hello world" data-content="Greatest Hits - 11111111 - Greatest Hits">Test</a>
+
+  <div class="btn-group menu-outer">
+    <a class="btn blue" href="#">button blue</a><a class="btn blue js-menu"><span class="caret white up"></span></a>
+    <ul class="menu rt">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Other Action</a></li>
+      <li><a href="#">hhh Action</a></li>
+      <li class="divider"></li>
+      <li><a href="#">More</a></li>
+    </ul>
+  </div>
+
+  <form method="post" action="">
+    <a class="btn green js-submit">提交</a>
+  </form>
+
+
+</div>
+
+</body>
+</html>

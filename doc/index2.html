@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>better index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="../csses/application.css" type="text/css" media="screen">
+    <script type="text/javascript" src="../javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../javascripts/utils.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.popup.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.tip.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.menu.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.form.js"></script>
+    <script type="text/javascript">
+      $(function(){
+          $('.tooltip').tip();
+          $('.js-popup').popup();
+          $('.js-menu').menu();
+          //    $('.js-submit').form();
+          //      $('.tooltip_left').tip({direction: "left"});
+          //      $('.tooltip_right').tip({direction: "right"});
+          //      $('.tooltip_bottom').tip({direction: "bottom"});
+          //      $('.tooltip_top').tip({direction: "top"});
+          });
+</script>
+  </head>
+  <body>
+    <div class="navbar fixed-width">
+      <div class="inner">
+        <div class="container">
+          <a href="#" class="logo">&Zeta;&Eta;&cup;&Alpha;</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Connect</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Me</a></li>
+          </ul>
+          <div class="pull-right">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="container fixed-width">
+        <div class="main">
+          <div class="module">
+
+            <ul class="nav">
+              <li class="active"><a href="#">Information</a></li>
+              <li><a href="#">Messages</a></li>
+              <li><a href="#">Options</a></li>
+              <li class="disabled"><a href="#">Password</a></li>
+            </ul>
+          </div>
+          <div class="module" style="padding: 10px;">
+            <ul class="nav tabs">
+              <li><a href="#">Information</a></li>
+              <li class="active"><a href="#">Messages</a></li>
+              <li><a href="#">Options</a></li>
+              <li><a href="#">Password</a></li>
+            </ul>
+          </div>
+          <div class="module">
+            <ul class="nav pills">
+              <li class="active"><a href="#">Information</a></li>
+              <li><a href="#">Messages</a></li>
+              <li><a href="#">Options</a></li>
+              <li><a href="#">Password</a></li>
+            </ul>
+          </div>
+          <div class="module">
+            <ul class="nav stacked">
+              <li class="active"><a href="#">Information</a></li>
+              <li><a href="#">Messages</a></li>
+              <li><a href="#">Options</a></li>
+              <li><a href="#">Password</a></li>
+            </ul>
+          </div>
+          <div class="module">
+            <ul class="nav stretched">
+              <li><a href="#">Information <strong>1000</strong></a></li>
+              <li><a href="#">Messages <strong>1000</strong></a></li>
+              <li><a href="#">Options <strong>1000</strong></a></li>
+              <li class="disabled"><a href="#">Password <strong>1000</strong></a></li>
+            </ul>
+          </div>
+          <div class="module">
+            <div class="body">
+              <span class="mark">Mark1</span>
+              <span class="mark blue">Blue</span>
+              <span class="mark green">Green</span>
+              <span class="mark yellow">Yellow</span>
+              <span class="mark red">Red</span>
+              <span class="mark orange">orange</span>
+            </div>
+          </div>
+          <div class="module">
+            <div class="body">
+
+              <a class="btn" href="#">button <span class="caret black down"></span></a>
+              <a class="btn green" href="#">吊死你了 <span class="caret white down"></span></a>
+
+              <div class="btn-group">
+                <a class="btn blue" href="#">button blue</a><a class="btn blue"><span class="caret white down"></span></a>
+              </div>
+
+              <a class="btn red" href="#">Red</a>
+              <a class="btn pink" href="#">Pink</a>
+              <a class="btn orange" href="#">Orange</a>
+              <a class="btn purple" href="#">Purple</a>
+              <a class="btn yellow" href="#">Yellow <span class="caret white down"></span></a>
+              <a class="btn disabled" href="#">Yellow</a>
+
+              <div class="btn-group">
+                <button class="btn">open</button><button class="btn"><span class="caret black down"></span></button>
+              </div>
+            </div>
+          </div>
+          <div class="module">
+            <div class="body">
+              <ul class="page">
+                <li class="prev"><a href="#">&lt;&lt;</a></li>
+                <li class="next disabled"><a href="#">&gt;&gt;</a></li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="module">
+            <div class="body">
+              <div class="alert">
+                <strong>Tip:</strong>
+                Hello! are you ready?
+                <a href="#" class="close">&times</a>
+              </div>
+              <div class="alert success">
+                <strong>Tip:</strong>
+                Hello! are you ready?
+                <a href="#" class="close">&times</a>
+              </div>
+              <div class="alert error">
+                <strong>Tip:</strong>
+                Hello! are you ready?
+                <a href="#" class="close">&times</a>
+              </div>
+            </div>
+          </div>
+          <div class="module">
+            <div class="header">
+              better javascript plugins
+            </div>
+            <div class="body">
+
+              <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+              <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+              <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+              <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+
+              <a href="#" class="js-popup" data-title="Hello world" data-content="Greatest Hits - 11111111 - Greatest Hits">Test</a>
+
+              <div class="btn-group menu-outer">
+                <a class="btn blue" href="#">button blue</a><a class="btn blue js-menu"><span class="caret white up"></span></a>
+                <ul class="menu rt">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Other Action</a></li>
+                  <li><a href="#">hhh Action</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">More</a></li>
+                </ul>
+              </div>
+
+              <div class="pull-right">
+              <a href="#" class="tooltip" data-title="Greatest Hits - Chapter One">Test</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

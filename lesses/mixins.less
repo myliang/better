@@ -1,0 +1,292 @@
+// mixinx.less
+
+// clearfix
+.clearfix{
+  *zoom: 1;
+  &:before, &:after{
+    display: table;
+    content: "";
+  }
+  &:after{ 
+    clear: both;
+  }
+}
+
+// ie7 inline-block
+//.ie7-inline-block{
+//  *display: inline;
+//  *zoom: 1;
+//}
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+//.ie7-restore-left-whitespace {
+//  *margin-left: .3em;
+//
+//  &:first-child {
+//    *margin-left: 0;
+//  }
+//}
+//.ie7-restore-right-whitespace{
+//  *margin-right: .3em;
+//
+//  &:last-child{
+//    *margin-left: 0;
+//  }
+//}
+
+// set width height
+.size(@w, @h){
+  width: @w;
+  height: @h;
+}
+.square(@v){
+  .size(@v, @v);
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+
+// text overflow
+.text-overflow{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .nowrap;
+}
+
+// css3
+// box-shadow
+.box-shadow(@v: 3px 3px 0 rgba(225,225,225, .6)){
+  box-shadow: @v;
+  -webkit-box-shadow: @v;
+  -moz-box-shadow: @v;
+}
+// border-radius
+.border-radius(@v: 2px){
+  border-radius: @v;            /* W3C syntax */
+  -moz-border-radius: @v;      /* Gecko browsers */
+  -webkit-border-radius: @v;   /* Webkit browsers */
+}
+
+//opacity
+.opacity(@v: 50){
+  opacity: @v / 100;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=@v);
+}
+
+// border border-radius box-shadow backgroun-color
+.border-shadow(@border_color: @base_border_color, 
+    @bg_color: @white, 
+    @shadow: @base_box_shadow, 
+    @border_width: 1px){
+  border: @border_width solid @border_color;
+  .box-shadow(@shadow);
+  overflow: hidden;
+  background-color: @bg_color;
+}
+.border-radius-shadow(@border_color: @base_border_color, 
+    @bg_color: @white, 
+    @radius: @base_border_radius, 
+    @shadow: @base_box_shadow, 
+    @border_width: 1px){
+
+  .border-shadow(@border_color, @bg_color, @shadow, @border_width);
+  .border-radius(@radius);
+}
+
+// Horizontal dividers
+// -------------------------
+// Dividers (basically an hr) within dropdowns and nav lists
+.divider-horizontal(@top: #e5e5e5) {
+  // IE7 needs a set width since we gave a height. Restricting just
+  // to IE7 to keep the 1px left/right space in other browsers.
+  // It is unclear where IE is getting the extra space that we need
+  // to negative-margin away, but so it goes.
+  *width: 100%;
+  height: 0;
+  margin: 5px 0; // 8px 1px
+  *margin: -5px 0 5px;
+  overflow: hidden;
+//  background-color: @white;
+  border: none;
+  border-top: 1px solid @top;
+}
+
+// btn disabled
+.btn-disabled{
+  background-image: none;
+  cursor: default;
+  .opacity(65);
+}
+
+// css3 btn background-image
+.btn-gradient(@bg_color: @gray, @link_color: @white){
+  background-color: @bg_color;
+  border: 1px solid darken(@bg_color, 10%);
+  border-bottom: 1px solid darken(@bg_color, 15%);
+  color: @link_color;
+  text-shadow: 0 1px 0 darken(@bg_color, 10%);
+  .gradient(lighten(@bg_color, 3%), @bg_color);
+  .box-shadow(0px 2px 0 fadeout(@bg_color, 60%));
+
+  &:hover, &:active, &.active, &.disabled{
+    background-color: darken(@bg_color, 3%);
+    .gradient(@bg_color, darken(@bg_color, 3%));
+    text-decoration: none;
+  }
+  &.disabled{
+    background-color: darken(@bg_color, 10%);
+    .btn-disabled;
+  }
+
+  .caret{
+    border-top-color: @white;
+  }
+}
+
+// css3 background-image
+.gradient(@from, @to){
+  background-image: -ms-linear-gradient(top, @from 0%, @to 100%);
+  background-image: -moz-linear-gradient(top, @from 0%, @to 100%);
+  background-image: -o-linear-gradient(top, @from 0%, @to 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, @from), color-stop(1, @to));
+  background-image: -webkit-linear-gradient(top, @from 0%, @to 100%);
+  background-image: linear-gradient(top, @from 0%, @to 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@from, endColorstr=@to);
+}
+
+// extend
+.box_with_img(@margin_left: 60px, @padding: 9px 12px, @left: 5px){
+  .relative;
+
+  .box{
+    padding: @padding;
+    margin-left: @margin_left;
+    margin: 0;
+
+    >a >img{
+      .absolute;
+      left: @left;
+      width: @margin_left - 10;
+      border: none;
+      .border-radius(4px);
+    }
+  }
+
+}
+
+.before-after{
+  content: '';
+  display: inline-block;
+}
+
+// caret
+.caret-full(@color: @black, @width: 5px){
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  margin-top: @width;
+  .before-after;
+
+  &.down{
+    border-top: @width solid @color;
+    border-right: @width solid transparent;
+    border-left: @width solid transparent;
+
+  }
+  &.up{
+    border-bottom: @width solid @color;
+    border-right: @width solid transparent;
+    border-left: @width solid transparent;
+  }
+}
+
+// arrow
+.arrow-left(@width: 5px, @color: @base_border_color){
+  .before-after;
+  .absolute;
+  border-top: @width solid transparent;
+  border-left: @width solid @color;
+  border-bottom: @width solid transparent;
+  margin-bottom: -@width;
+  right: -@width;
+}
+.arrow-right(@width: 5px, @color: @base_border_color){
+  .before-after;
+  .absolute;
+  border-top: @width solid transparent;
+  border-right: @width solid @color;
+  border-bottom: @width solid transparent;
+  margin-bottom: -@width;
+  left: -@width;
+}
+.arrow-top(@width: 5px, @color: @base_border_color){
+  .before-after;
+  .absolute;
+  border-left: @width solid transparent;
+  border-top: @width solid @color;
+  border-right: @width solid transparent;
+  margin-left: -@width;
+  bottom: -@width;
+}
+.arrow-bottom(@width: 5px, @color: @base_border_color){
+  .before-after;
+  .absolute;
+  border-left: @width solid transparent;
+  border-bottom: @width solid @color;
+  border-right: @width solid transparent;
+  margin-left: -@width;
+  top: -@width;
+}
+
+.arrow-full(@border_width: 10px){
+  &.left{
+    &:before{
+//      border-left: @border_width + 1 solid @base_border;
+      .arrow-left(@border_width + 1);
+      bottom: 50%;
+    }
+    &:after{
+      .arrow-left(@border_width, @white);
+      bottom: 50%;
+    }
+  }
+  &.right{
+    &:before{
+//      border-right: @border_width + 1 solid @base_border;
+      .arrow-right(@border_width + 1);
+      bottom: 50%;
+    }
+    &:after{
+      .arrow-right(@border_width, @white);
+      bottom: 50%;
+    }
+  }
+  &.top{
+    &:before{
+//      border-top: @border_width + 1 solid @base_border;
+      .arrow-top(@border_width + 1);
+      left: 50%;
+    }
+    &:after{
+      .arrow-top(@border_width, @white);
+      left: 50%;
+    }
+  }
+  &.bottom{
+    &:before{
+//      border-bottom: @border_width + 1 solid @base_border;
+      .arrow-bottom(@border_width + 1);
+      left: 50%;
+    }
+    &:after{
+      .arrow-bottom(@border_width, @white);
+      left: 50%;
+    }
+  }
+}

@@ -1,0 +1,103 @@
+.navbar .nav{
+  .pull-left;
+  margin-right: 12px;
+
+  > li{
+    >a{
+      color: @gray_light;
+      font-weight: bold;
+      padding: 13px 12px 12px;
+      &:hover {
+        color: @white;
+      }
+    }
+    &.active > a {
+      .box-shadow(@nav_active_box_shadow);
+      color: @white;
+    }
+  }
+}
+
+.nav{
+  .clearfix;
+  >li{
+    .pull-left;
+    &.active >a, &.active >a:hover {
+      font-weight: bold;
+      color: @nav_link_color_hover;
+    }
+    >a{
+      .show;
+      font-weight: normal;
+      padding: 10px 12px;
+      font-size: @base_font_size;
+      color: @nav_link_color;
+
+      &:hover {
+        color: @nav_link_color_hover;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.nav.stretched {
+  overflow: hidden;
+  >li{
+    >a{
+      padding: 6px 12px;
+      color: @gray;
+      strong{
+        .show;
+      }
+    }
+  }
+}
+
+.nav.pills{
+  &.small >li >a{
+    padding: 5px 8px;
+    font-size: @base_font_size - 2;
+  }
+  >li{
+    &.active{
+      >a, >a:hover {
+        color: @nav_pills_active_link_color;
+        background-color: @nav_pills_active_background_color;
+      }
+    }
+
+    >a{
+      margin: 5px 5px 5px 0;
+      background-color: @nav_link_background_color_hover;
+      .border-radius(@nav_border_radius - 2);
+      &:hover {
+        background-color: lighten(@nav_pills_active_background_color, 30%);
+      }
+    }
+  }
+}
+
+.nav.stacked, .nav.tabs{
+  >li >a:hover {
+    background-color: @nav_link_background_color_hover;
+  }
+  >li.active {
+    >a, >a:hover {
+      background-color: @white;
+    }
+  }
+}
+.nav.tabs{
+  padding: 0 5px;
+  >li{
+    margin-bottom: -1px;
+  }
+}
+.nav.stacked{
+  >li{
+    float: none;
+  }
+}
+
+  

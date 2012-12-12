@@ -1,0 +1,32 @@
+.form{
+  font-size: @form_font_size;
+  // fr => form row, fd => form data cell
+  .fr {
+    margin: 10px 0;
+    .fd {
+      &:first-child {
+        .pull-left;
+        width: @form_left_width;
+        padding-top: 8px;
+        text-align: right;
+      }
+      &:last-child {
+        margin-left: @form_left_width + 10;
+      }
+    }
+
+  }
+}
+
+// extend
+.item .form{
+  margin-left: 70px;
+  .fr {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

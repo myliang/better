@@ -1,0 +1,29 @@
+// default fix layout
+.wrapper{
+  padding: @layout_padding_top @layout_padding_left 15px;
+}
+.container{
+  .relative;
+  margin: 0 auto;
+  width: 100%;
+
+  >.main{
+
+    width: auto;
+    margin-right: 360px;
+
+    >.sidebar{
+      .absolute;
+      top: 0;
+      right: 0;
+      width: 340px;
+    }
+
+  }
+
+  // width fixed
+  &.fixed-width{
+    width: @layout_fixed_with;
+
+  }
+}

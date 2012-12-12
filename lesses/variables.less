@@ -1,0 +1,168 @@
+// variables.less
+//lighten(@color, 10%);     // return a color which is 10% *lighter* than @color
+//darken(@color, 10%);      // return a color which is 10% *darker* than @color
+//
+//saturate(@color, 10%);    // return a color 10% *more* saturated than @color
+//desaturate(@color, 10%);  // return a color 10% *less* saturated than @color
+//
+//fadein(@color, 10%);      // return a color 10% *less* transparent than @color
+//fadeout(@color, 10%);     // return a color 10% *more* transparent than @color
+//fade(@color, 50%);        // return @color with 50% transparency
+//
+//spin(@color, 10);         // return a color with a 10 degree larger in hue than @color
+//spin(@color, -10);        // return a color with a 10 degree smaller hue than @color
+//
+//mix(@color1, @color2);    // return a mix of @color1 and @color2
+
+// grayscale
+@black: #000;
+@gray_darker: #222;
+@gray_dark: #333;
+@gray: #555;
+@gray_light: #999;
+@gray_lighter: #eee;
+@white: #fff;
+@white_smoke: #F5F5F5;
+
+@blue: #506DAB; //#049cdb;
+@green: #67A54B; //#46a546;
+@red: #9d261d;
+@yellow: #ffc40d;
+@orange: #f89406;
+@pink: #c3325f;
+@purple: #7a43b6;
+
+// font color
+@link_color: #4183C4; //#0084B4;
+@link_color_hover: @gray_darker;
+@text_color: @gray_dark;
+
+// base line-height
+@base_line_height: 20px;
+@base_font_size: 13px;
+@base_zindex: 1000;
+@base_box_shadow: 0 0 5px rgba(0, 0, 0, .2);
+// #E8E8E8;
+@base_border_color: #ccc;
+@base_border_radius: 4px;
+@base_fixed_width: 1200px;
+@base_padding: 12px 10px;
+@base_offset: 12px;
+
+// background color
+@body_background_color: #F1F1F1; //#F9F9F9;
+
+// font family
+@en_font_family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// nav variables
+@nav_fixed_width: @base_fixed_width;
+@nav_border_color: @base_border_color;
+@nav_border_radius: @base_border_radius;
+@nav_line_height: @base_line_height - 2;
+@nav_link_color: @link_color;
+@nav_link_color_hover: @gray_dark;
+@nav_link_background_color_hover: @white_smoke;
+@nav_active_background_color: @gray_darker;
+@nav_active_box_shadow: inset 0 5px 10px rgba(0, 0, 0, .5);
+// nav pills
+@nav_pills_active_link_color: @white;
+@nav_pills_active_background_color: @blue;
+
+// navbar variables
+@navbar_background_color: #252525;
+@navbar_min_height: 40px;
+@navbar_rgba: 0 2px 3px rgba(0, 0, 0, .25);
+@navbar_zindex: @base_zindex;
+@navbar_padding_left: 14px;
+
+// layout container
+@layout_padding_top: @navbar_min_height + 20;
+@layout_padding_left: @navbar_padding_left;
+@layout_fixed_with: @base_fixed_width;
+@layout_main_border_radius: @base_border_radius + 2;
+//@layout_main_border_color: @base_border_color;
+@layout_main_background_color: @white;
+
+// menu variables
+@menu_link_color: @gray;
+@menu_link_background_color_hover: @white_smoke;
+@menu_zindex: @base_zindex - 10;
+
+// button variables
+@btn_link_color: @gray_dark;
+@btn_font_size: @base_font_size;
+@btn_border_radius: 2px;
+@btn_line_height: @base_line_height;
+
+// page variables
+@page_link_background_color: @white;
+@page_link_border_color: #ddd;
+@page_border_radius: 2px;
+
+// mark variables
+@mark_background_color: @gray_light;
+@mark_line_height: @base_line_height - 5px;
+@mark_font_size: @base_font_size - 2px;
+
+// thumbnail
+@thumbnail_border_color: @base_border_color;
+@thumbnail_border_color_hover: #08C;
+@thumbnail_border_radius: 4px;
+
+// alert
+@alert_box_shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+@alert_link_color: #c09853;
+@alert_background_color: #fcf8e3;
+@alert_border_color: darken(spin(@alert_background_color, -10), 3%);
+
+@alert_error_link_color: #b94a48;
+@alert_error_background_color: #f2dede;
+@alert_error_border_color: darken(spin(@alert_error_background_color, -10), 3%);
+
+@alert_success_link_color: #468847;
+@alert_success_background_color: #dff0d8;
+@alert_success_border_color: darken(spin(@alert_success_background_color, -10), 5%);
+
+// tip
+@tip_background_color: @gray_dark;
+@tip_font_color: @white;
+
+// popup
+// @popup_border_color: @base_border_color;
+@popup_font_size: @base_font_size;
+
+// module
+// @module_border_color: @base_border_color;
+
+// item
+// @item_border_color: @base_border_color;
+
+// input
+@input_border_color: @base_border_color;
+@input_box_shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3);
+@input_border_color_focus: #4d90fe;
+@input_font_color_focus: @gray;
+@input_font_color: @gray_light;
+@input_search_font_color: #444;
+@input_search_background_color: #ccc;
+@input_search_box_shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+
+// content
+@content_border_color: @base_border_color;
+@content_line_height: @base_line_height;
+@content_font_size: @base_font_size;
+@content_font_color: @gray_light;
+@content_margin_left: 70px;
+
+// form
+@form_font_size: @base_font_size;
+@form_left_width: 120px;
+
+// arrow
+@arrow_zindex: 2000;
+@arrow_tip_border_color: @tip_background_color;
+@arrow_border_width: 6px;
+
+
+

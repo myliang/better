@@ -1,0 +1,31 @@
+// page less
+.page{
+  .clearfix;
+  >li{
+    .inline-block;
+
+    &.prev{
+      .pull-left;
+    }
+    &.next{
+      .pull-right;
+    }
+
+    &:first-child >a{
+      .border-radius(@page_border_radius 0 0 @page_border_radius);
+    }
+    &:last-child >a{
+      .border-radius(0 @page_border_radius @page_border_radius 0);
+    }
+    >a{
+      .inline-block;
+      font-weight: bold;
+      padding: 5px 10px;
+      background-color: @page_link_background_color;
+      border: 1px solid @page_link_border_color;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

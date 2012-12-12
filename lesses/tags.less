@@ -1,0 +1,66 @@
+// html tag comment setttings
+*{
+  margin: 0;
+  padding: 0;
+}
+body, label, input, textarea, select, button {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+body{
+  font-size: @base_font_size;
+  color: @gray_dark;
+//  line-height: @base_line_height;
+  background-color: @body_background_color;
+}
+p{
+  line-height: @base_line_height;
+}
+ul{
+  list-style: none;
+  a{
+    text-decoration: none;
+  }
+}
+a{
+  text-decoration: none;
+  color: @link_color;
+  &:hover{
+    text-decoration: underline;
+//    color: @link_color_hover;
+  }
+  &:hover, &:active{
+    outline: 0;
+  }
+}
+img{
+  border: none;
+}
+hr{
+  .divider-horizontal;
+}
+
+// h1 h2 h3 h4 h5 h6
+h1, h2, h3, h4, h5, h6{
+//  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  color: @gray;
+}
+h1{
+  font-size: 40px;
+}
+h2{
+  font-size: 30px;
+}
+h3{
+  font-size: 24px;
+}
+h4{
+  font-size: 17px;
+}
+h5{
+  font-size: 14px;
+}
+h6{
+  font-size: 11px;
+}

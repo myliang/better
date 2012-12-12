@@ -1,0 +1,43 @@
+// menus
+.menu-outer{
+  .relative;
+}
+.menu{
+  .absolute;
+  .hide;
+  .pull-left;
+  z-index: @menu_zindex;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0;
+
+  .border-shadow;
+
+  &.lt{
+    left: 0;
+  }
+  &.rt{
+    right: 0;
+  }
+
+  >li{
+    &.divider{
+      .divider-horizontal;
+    }
+
+    >a{
+      .show;
+      padding: 5px 16px;
+      clear: both;
+      font-weight: normal;
+      line-height: @base_line_height;
+      color: @menu_link_color;
+      .nowrap;
+
+      &:hover{
+        background-color: @menu_link_background_color_hover;
+        text-decoration: none;
+      }
+    }
+  }
+}

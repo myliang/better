@@ -1,0 +1,82 @@
+// buttons less
+.btn{
+  cursor: pointer;
+  .text-overflow;
+  margin-right: 5px;
+//  margin-bottom: 5px;
+  padding: 4px 8px;
+  line-height: @btn_line_height;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  .inline-block;
+  .border-radius(@btn_border_radius);
+  font-size: @btn_font_size;
+  color: @btn_link_color;
+  background-color: #eee;
+  border: 1px solid #999;
+  border-bottom: 1px solid #888;
+  text-shadow: 0 1px 0 #fff;
+  .box-shadow(0px 2px 0 rgba(0, 0, 0, 0.2));
+  .gradient(#F5F6F7, #dddddd);
+  text-decoration: none;
+
+  &:hover, &:active, &.active, &.disabled {
+    background: #FBFBFB;
+    .gradient(#F5F6F7, #E6E6E6);
+    text-decoration: none;
+  }
+  &.disabled{
+    background-color: #999;
+    .btn-disabled;
+  }
+
+  &.green{
+    .btn-gradient(@green, @white);
+  }
+  &.blue{
+    .btn-gradient(@blue, @white);
+  }
+  &.red{
+    .btn-gradient(@red, @white);
+  }
+  &.pink{
+    .btn-gradient(@pink, @white);
+  }
+  &.orange{
+    .btn-gradient(@orange, @white);
+  }
+  &.purple{
+    .btn-gradient(@purple, @white);
+  }
+  &.yellow{
+    .btn-gradient(@yellow, @white);
+  }
+
+  .caret{
+    margin-top: 6px;
+    margin-left: 0;
+  }
+}
+
+// buttons group
+.btn-group{
+  .inline-block;
+  vertical-align: middle;
+  .nowrap;
+
+  >.btn{
+    margin-left: -1px;
+    margin-right: 0;
+    .border-radius(0);
+  }
+  .btn:first-child{
+    margin-left: 0;
+    .border-radius(@btn_border_radius 0 0 @btn_border_radius);
+  }
+  .btn:last-child{
+    margin-right: 5px;
+    .border-radius(0 @btn_border_radius @btn_border_radius 0);
+  }
+}

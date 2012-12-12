@@ -1,0 +1,32 @@
+.navbar{
+  z-index: @navbar_zindex;
+  .box-shadow(@navbar_rgba);
+  width: 100%;
+  .fixed;
+
+  &.top, &.left{
+    left: 0;
+    top: 0;
+  }
+  &.bottom, &.right{
+    right: 0;
+    bottom: 0;
+  }
+
+  &.fixed-width{
+    >.inner >.container{
+      width: @nav_fixed_width;
+    }
+  }
+
+  >.inner{
+    padding: 0 @navbar_padding_left;
+    min-height: @navbar_min_height;
+    background-color: @navbar_background_color;
+
+    >.container{
+      margin: 0 auto;
+    }
+  }
+
+}
