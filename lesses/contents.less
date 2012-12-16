@@ -33,6 +33,13 @@
     .border-radius(@base_border_radius);
   }
 
+  &.small{
+    margin-left: @content_margin_left - 10;
+    >a >img {
+      width: @content_margin_left - @base_offset - 10;
+    }
+  }
+
   &.big{
     margin-left: @content_margin_left + @base_offset;
     >.header {

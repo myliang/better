@@ -14,9 +14,10 @@ _form:: =
     # before
     @before.call(@self)
 
-    self_title = @self.text().replace(/(\r|\n|\r\n|\s)+/g, '')
-    @self.addClass('disabled')
-    @self.html(@self.html().replace(self_title, "&bull;&bull;&bull;"))
+    # self_title = @self.text().replace(/(\r|\n|\r\n|\s)+/g, '')
+    # @self.addClass('disabled')
+    # @self.html(@self.html().replace(self_title, "&bull;&bull;&bull;"))
+    @loading = new util.loading(@self)
     url = @url()
     data = @fields()
 
@@ -26,13 +27,14 @@ _form:: =
       if token?
         xhr.setRequestHeader('X-CSRF-Token', token)
     })
-    $.post(url, data, (msg) => @post_after(self_title, msg))
-      .error (msg)=> @post_after(self_title, msg)
+    $.post(url, data, (msg) => @post_after(msg))
+      .error (msg)=> @post_after(msg)
     false
 
-  post_after: (self_title, msg)->
-    @self.removeClass('disabled')
-    @self.html(self_title)
+  post_after: (msg)->
+    # @self.removeClass('disabled')
+    # @self.html(self_title)
+    @loading.recover()
     @after.call(@self, msg)
 
 
@@ -72,7 +74,7 @@ $.fn.form.defaults =
   cache_key_suffix: "form"
   live: false,
   trigger: 'click'
-  except: ".active"
+  except: ".active,.disabled"
   url_suffix: ".json"
   trigger_name: ->
     @trigger + "." + @cache_key_suffix

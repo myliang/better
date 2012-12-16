@@ -14,11 +14,13 @@
     <script type="text/javascript" src="../javascripts/jquery.tip.js"></script>
     <script type="text/javascript" src="../javascripts/jquery.menu.js"></script>
     <script type="text/javascript" src="../javascripts/jquery.form.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.paginate.js"></script>
     <script type="text/javascript">
       $(function(){
           $('.tooltip').tip();
           $('.js-popup').popup();
           $('.js-menu').menu();
+          $('.js-paginate').paginate({total_rows: 100, url: 'http://www.baidu.com'})
           //    $('.js-submit').form();
           //      $('.tooltip_left').tip({direction: "left"});
           //      $('.tooltip_right').tip({direction: "right"});
@@ -122,9 +124,10 @@
           </div>
           <div class="module">
             <div class="body">
-              <ul class="page">
+              <ul class="page js-paginate">
                 <li class="prev"><a href="#">&lt;&lt;</a></li>
-                <li class="next disabled"><a href="#">&gt;&gt;</a></li>
+                <li class="current"><a href="#" class="disabled">1</a></li>
+                <li class="next"><a href="#">&gt;&gt;</a></li>
               </ul>
 
             </div>

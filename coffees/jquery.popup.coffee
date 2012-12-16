@@ -21,6 +21,12 @@ _popup:: =
     @
   show: ->
     @body = @get_content()
+    @arrow_doc = $("<div class=\"#{@arrow_doc_class}\"></div>")
+    $(document.body).append(@body).append(@arrow_doc) # call body information
+
+    @body.on 'click', -> false
+    $('.close', @body).on 'click', => @toggle(); false
+
     offset = new util.offset(@self, @body, @offset)
     temp_offset = offset[@direction]()
     if @direction is "auto"
@@ -28,14 +34,16 @@ _popup:: =
       temp_offset = offset[temp_offset]()
     else temp_offset
 
-    $('#' + @arrow_doc_id).addClass(@direction).css(offset.arrow(@direction))
+    @arrow_doc.addClass(@direction).css(offset.arrow(@direction))
     @body.css(temp_offset).show()
+    @
   hide: ->
     if @is_remove_if_hide
       @body.remove()
     else
       @body.hide()
-    $('#' + @arrow_doc_id).remove()
+    @arrow_doc.remove()
+    @
   get_content: ->
     href = @self.attr('href')
     if typeof(@content) == "function"
@@ -53,7 +61,7 @@ _popup:: =
     content = @self.attr('data-content')
 
     if title?
-      title = """<div class="header">#{title}</div>"""
+      title = """<div class="header">#{title}<a href="#" class="close">&times</a></div>"""
     else
       title = ""
 
@@ -67,8 +75,6 @@ _popup:: =
         </div>
       </div>
     """)
-    $(document.body).append("<div id=\"#{@arrow_doc_id}\" class=\"#{@arrow_doc_class}\"></div>")
-    content.appendTo(document.body)
     content
 
 $.fn.popup = (option) ->
@@ -89,11 +95,10 @@ $.fn.popup.defaults =
   direction: "auto" # center left top right bottom
   live: false
   trigger: "click"
-  offset: 0
+  offset: 10
   except: '.disabled,:disabled,:animated'
   content: null  # jquery object or string
   is_remove_if_hide: true # if hide content is or not remove
-  arrow_doc_id: "js-arrow-popup"
   arrow_doc_class: "arrow-popup"
   max_width: "660px"
   trigger_name: ->

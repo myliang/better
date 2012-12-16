@@ -3,7 +3,7 @@ $=jQuery
 cache_objects = []  # popup object
 
 # menu
-_menu = (_self, option) -> 
+_menu = (_self, option)->
   $.extend(@, option)
   @self = $(_self)
   @active = @self
@@ -21,12 +21,12 @@ _menu:: =
     false
   show: ->
     @body = @get_content()
-    source_t = @self.offset().top;
-    scroll_h = util.scroll().h;
+    source_t = @self.offset().top
+    scroll_h = util.scroll().h
 
-    source_padding = (@self.parent().outerHeight() - @self.outerHeight())/2;
+    source_padding = (@self.parent().outerHeight() - @self.outerHeight())/2
 
-    top = @self.outerHeight() + source_padding;
+    top = @self.outerHeight() + source_padding
     if(scroll_h / 2 < source_t)
       top -= @body.outerHeight(true) + @self.outerHeight()
 
@@ -39,7 +39,7 @@ _menu:: =
     @self.next()
 
 
-$.fn.menu = (option) -> 
+$.fn.menu = (option)->
   option = $.extend({}, $.fn.menu.defaults, option || {})
   # bind event
   binder = if option.live then "live" else "bind"

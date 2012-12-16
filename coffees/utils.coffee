@@ -1,11 +1,17 @@
-util = 
+util =
   data: (_self, key, value_callback) ->
     cache = _self.data(key)
-#    console.log(':::cache', cache)
+    console.log(':::cache', key, cache)
     unless cache?
       cache = value_callback.call(_self)
       _self.data(key, cache)
     cache
+  loading: (obj) ->
+    @target = obj
+    @old = obj.text().replace(/(\r|\n|\r\n|\s)+/g, '')
+    obj.addClass('disabled')
+    obj.html(obj.html().replace(@old, "&bull;&nbsp;&bull;&nbsp;&bull;"))
+    @
   unempty: (obj)->
     obj? and not/^\s+$/.test(obj)
   scroll: ->
@@ -30,6 +36,9 @@ util =
       @target.outer.h = @content.h + @target.padding.h
     @
 
+util.loading:: =
+  recover: ->
+    @target.removeClass('disabled').html(@old)
 util.offset:: =
   arrow: (pos) ->
     ret = left: 0, top: 0, position: "absolute"

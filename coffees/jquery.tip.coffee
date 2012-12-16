@@ -39,7 +39,6 @@ $.fn.tip.defaults = $.extend({}, $.fn.popup.defaults, {
   offset: 8
   is_remove_if_hide: true
   trigger: "hover"
-  arrow_doc_id: "js-arrow-tip"
   arrow_doc_class: "arrow-tip"
   max_width: "260px"
   content: ->
@@ -52,8 +51,6 @@ $.fn.tip.defaults = $.extend({}, $.fn.popup.defaults, {
         </div>
       </div>
     """)
-    $(document.body).append("<div id=\"#{@arrow_doc_id}\" class=\"#{@arrow_doc_class}\"></div>")
-    content.appendTo(document.body)
     content
 })
 
