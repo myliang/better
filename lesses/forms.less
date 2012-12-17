@@ -1,20 +1,44 @@
-.form{
+.form {
   font-size: @form_font_size;
   // fr => form row, fd => form data cell
   .fr {
-    margin: 10px 0;
-    .fd {
-      &:first-child {
-        .pull-left;
-        width: @form_left_width;
-        padding-top: 8px;
-        text-align: right;
-      }
-      &:last-child {
-        margin-left: @form_left_width + 10;
-      }
+    margin-bottom: 12px;
+    .label{
+      .pull-left;
+      width: @form_left_width;
+      padding-top: 8px;
+      text-align: right;
+      color: @gray;
     }
+  }
+}
 
+.form.small{ 
+  .fr .fd, .form-actions{
+    padding-left: @form_left_width - 100;
+  }
+  .fr{
+    .relative;
+    .label{
+      width: auto;
+      .absolute;
+      top: 2px;
+      left: @form_left_width - 89;
+    }
+  }
+}
+
+.form .form-actions, .form .fr .fd{
+  padding-left: @form_left_width + 10;
+}
+// form-actions
+.form-actions{
+  padding: 12px 20px;
+  background-color: @white_smoke;
+  border-top: 1px solid @base_border_color;
+
+  a {
+    margin-right: 8px;
   }
 }
 
@@ -22,10 +46,10 @@
 .item .form{
   margin-left: 70px;
   .fr {
-    &:first-child {
+    .label {
       margin-top: 0;
     }
-    &:last-child {
+    .fd {
       margin-bottom: 0;
     }
   }

@@ -3,11 +3,11 @@
 // clearfix
 .clearfix{
   *zoom: 1;
-  &:before, &:after{
+  &:before, &:after {
     display: table;
     content: "";
   }
-  &:after{ 
+  &:after { 
     clear: both;
   }
 }
@@ -146,6 +146,7 @@
 
   .caret{
     border-top-color: @white;
+    border-bottom-color: @white;
   }
 }
 
@@ -183,27 +184,6 @@
 .before-after{
   content: '';
   display: inline-block;
-}
-
-// caret
-.caret-full(@color: @black, @width: 5px){
-  width: 0;
-  height: 0;
-  vertical-align: top;
-  margin-top: @width;
-  .before-after;
-
-  &.down{
-    border-top: @width solid @color;
-    border-right: @width solid transparent;
-    border-left: @width solid transparent;
-
-  }
-  &.up{
-    border-bottom: @width solid @color;
-    border-right: @width solid transparent;
-    border-left: @width solid transparent;
-  }
 }
 
 // arrow

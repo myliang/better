@@ -52,12 +52,17 @@
       return this.step(-1);
     },
     step: function(offset) {
-      var params;
+      var params,
+        _this = this;
       this.page += offset;
       this.loading = new util.loading(this.self);
       params = {};
       params[this.page_name] = this.page;
-      $.get(this.url + this.url_suffix, params, this.get_after).error(this.get_after);
+      $.get(this.url + this.url_suffix, params, function() {
+        return _this.get_after();
+      }).error(function() {
+        return _this.get_after();
+      });
       return this;
     },
     is_prev: function() {
@@ -74,10 +79,10 @@
       this.page_rows || (this.page_rows = data.per_page);
       this.total_rows || (this.total_rows = data.total_pages);
       this.after(data);
-      this.set_other(offset);
+      this.set_other();
       return this.loading.recover();
     },
-    set_other: function(offset) {
+    set_other: function() {
       var n, p;
       p = $('.prev a', this.self);
       n = $('.next a', this.self);

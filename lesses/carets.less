@@ -1,0 +1,25 @@
+// carets.less
+.caret{
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  margin-top: @caret_border_width;
+  .before-after;
+  border-color: @caret_border_color;
+
+  &.down{
+    border-top-width: @caret_border_width;
+    border-top-style: solid;
+    border-right: @caret_border_width solid transparent;
+    border-left: @caret_border_width solid transparent;
+
+  }
+  &.up{
+    border-bottom-width: @caret_border_width;
+    border-bottom-style: solid;
+    border-right: @caret_border_width solid transparent;
+    border-left: @caret_border_width solid transparent;
+  }
+}
+
+

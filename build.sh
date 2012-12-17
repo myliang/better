@@ -15,7 +15,7 @@ recess --compress $less_file > $css_compress_file
 # cat $css_file >> $application_css_file
 coffee --compile --output $js_basepath $coffee_basepath
 
-jses=("utils" "jquery.popup" "jquery.tip" "jquery.menu" "jquery.form" "jquery.paginate")
+jses=("utils" "jquery.popup" "jquery.tip" "jquery.menu" "jquery.form" "jquery.paginate" "other")
 echo "" > ${js_basepath}${app_name}.min.js
 echo "" > ${js_basepath}${app_name}.js
 for js in ${jses[@]}; do

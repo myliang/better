@@ -36,8 +36,8 @@ _paginate:: =
     @loading = new util.loading(@self)
     params = {}
     params[@page_name] = @page
-    $.get(@url + @url_suffix, params, @get_after)
-      .error @get_after
+    $.get(@url + @url_suffix, params, => @get_after())
+      .error => @get_after()
     @
   is_prev: -> @page > 1
   is_next: ->
@@ -47,9 +47,9 @@ _paginate:: =
     @page_rows ||= data.per_page
     @total_rows ||= data.total_pages
     @after(data)
-    @set_other(offset)
+    @set_other()
     @loading.recover()
-  set_other: (offset)->
+  set_other: ->
     p = $('.prev a', @self)
     n = $('.next a', @self)
     $('.current a', @self).text(@page)
