@@ -2,8 +2,8 @@
 (function() {
 
   jQuery(function() {
-    $('.js-menu').menu();
-    return $('.form.small input').on('keyup', function() {
+    var input_label;
+    input_label = function() {
       var label;
       label = $(this).parent().prev();
       if (/^\s*$/.test(this.value)) {
@@ -11,7 +11,23 @@
       } else {
         return label.hide();
       }
+    };
+    $('.js-menu').menu();
+    $('.js-paginate').paginate({
+      after: function(data) {
+        return $('#js-paginate-result').html(data.content);
+      }
     });
+    $('.js-form').form({
+      after: function(data) {
+        return $('#js-paginate-result').prepend(data.content);
+      }
+    });
+    $('.form.small input').on('keyup', input_label);
+    setTimeout(function() {
+      return $('.form.small input').each(input_label);
+    }, 1000);
+    return false;
   });
 
 }).call(this);

@@ -1108,7 +1108,7 @@ textarea {
 }
 
 .form .fr {
-  margin-bottom: 12px;
+  margin: 12px 0;
 }
 
 .form .fr .label {
@@ -1117,6 +1117,12 @@ textarea {
   padding-top: 8px;
   color: #555555;
   text-align: right;
+}
+
+.items .item .form .fr,
+.module .body .form .fr,
+.module .inner .form .fr {
+  margin-top: 0;
 }
 
 .form.small .fr .fd,
@@ -1362,6 +1368,7 @@ textarea {
 .nav.stacked > li > a,
 .module > .header,
 .popup > .header,
+.items .items > .item:last-child,
 .items > .item {
   border-bottom: 1px solid #cccccc;
 }
@@ -1500,6 +1507,7 @@ textarea {
 
 .item > .content.big,
 .module > .content.big {
+  min-height: 70px;
   margin-left: 82px;
 }
 

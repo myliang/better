@@ -15,6 +15,9 @@
       at.go(this);
       return false;
     });
+    if (this.self.attr('data-url') != null) {
+      this.url = this.self.attr('data-url');
+    }
     if (this.url != null) {
       this.step(0);
     }
@@ -24,6 +27,7 @@
   _paginate.prototype = {
     go: function(node) {
       var self_p;
+      this.node = $(node);
       try {
         self_p = $(node).parent();
         if (self_p.is(this.except)) {
@@ -55,35 +59,51 @@
       var params,
         _this = this;
       this.page += offset;
-      this.loading = new util.loading(this.self);
+      if (this.node != null) {
+        this.loading = new util.loading(this.node);
+      }
       params = {};
       params[this.page_name] = this.page;
-      $.get(this.url + this.url_suffix, params, function() {
-        return _this.get_after();
-      }).error(function() {
-        return _this.get_after();
+      $.get(this.url + this.url_suffix, params, function(data) {
+        return _this.get_after(data);
+      }).error(function(data) {
+        return _this.get_after(data);
       });
       return this;
+    },
+    total_pages: function() {
+      var _ref;
+      if (this.total_rows != null) {
+        return this.total_rows / this.page_rows + ((_ref = this.total_rows % this.page_rows > 0) != null ? _ref : {
+          1: 0
+        });
+      } else {
+        return 0;
+      }
     },
     is_prev: function() {
       return this.page > 1;
     },
     is_next: function() {
-      var total_pages, _ref;
-      total_pages = this.total_rows / this.page_rows + ((_ref = this.total_rows % this.page_rows > 0) != null ? _ref : {
-        1: 0
-      });
-      return this.page < total_pages;
+      return this.page < this.total_pages();
     },
     get_after: function(data) {
-      this.page_rows || (this.page_rows = data.per_page);
-      this.total_rows || (this.total_rows = data.total_pages);
+      if (this.page_rows != null) {
+        this.page_rows = data.per_page;
+        this.total_rows = data.total_pages;
+      }
       this.after(data);
       this.set_other();
-      return this.loading.recover();
+      if (this.node != null) {
+        return this.loading.recover();
+      }
     },
     set_other: function() {
       var n, p;
+      if (this.total_pages() <= 1) {
+        this.self.remove();
+        return;
+      }
       p = $('.prev a', this.self);
       n = $('.next a', this.self);
       $('.current a', this.self).text(this.page);
@@ -127,7 +147,7 @@
     trigger_name: function() {
       return this.trigger;
     },
-    after: function() {}
+    after: function(msg) {}
   };
 
 }).call(this);

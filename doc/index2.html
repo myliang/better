@@ -20,7 +20,7 @@
           $('.tooltip').tip();
           $('.js-popup').popup();
           $('.js-menu').menu();
-          $('.js-paginate').paginate({total_rows: 100, url: 'http://www.baidu.com'})
+          $('.js-paginate').paginate()
           //    $('.js-submit').form();
           //      $('.tooltip_left').tip({direction: "left"});
           //      $('.tooltip_right').tip({direction: "right"});
@@ -126,7 +126,7 @@
           </div>
           <div class="module">
             <div class="inner">
-              <ul class="page">
+              <ul class="page js-paginate" data-url="http://www.baidu.com">
                 <li class="prev"><a href="#">&lt;&lt;</a></li>
                 <li class="current"><a href="#" class="disabled">1</a></li>
                 <li class="next"><a href="#">&gt;&gt;</a></li>

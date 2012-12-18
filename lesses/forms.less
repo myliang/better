@@ -2,7 +2,7 @@
   font-size: @form_font_size;
   // fr => form row, fd => form data cell
   .fr {
-    margin-bottom: 12px;
+    margin: 12px 0;
     .label{
       .pull-left;
       width: @form_left_width;
@@ -10,6 +10,14 @@
       text-align: right;
       color: @gray;
     }
+  }
+}
+
+.items .item,
+.module .body, 
+.module .inner {
+  .form .fr{
+    margin-top: 0;
   }
 }
 

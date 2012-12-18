@@ -9,13 +9,17 @@ _paginate = (_self, option)->
   at = @
   $('a', @self).on(@trigger, -> at.go(@); false )
 
+  if @self.attr('data-url')?
+    @url = @self.attr('data-url')
+
   if @url?
     @step(0)
-  
+
   @
 
 _paginate:: =
   go: (node)->
+    @node = $(node)
     try
       self_p = $(node).parent()
       return if self_p.is(@except)
@@ -33,23 +37,33 @@ _paginate:: =
     @step(-1)
   step: (offset)->
     @page += offset
-    @loading = new util.loading(@self)
+    if @node?
+      @loading = new util.loading(@node)
     params = {}
     params[@page_name] = @page
-    $.get(@url + @url_suffix, params, => @get_after())
-      .error => @get_after()
+    $.get(@url + @url_suffix, params, (data)=> @get_after(data))
+      .error (data)=> @get_after(data)
     @
+  total_pages: ->
+    if @total_rows?
+      @total_rows/@page_rows + (@total_rows%@page_rows > 0 ? 1 : 0)
+    else 0
   is_prev: -> @page > 1
   is_next: ->
-    total_pages = @total_rows/@page_rows + (@total_rows%@page_rows > 0 ? 1 : 0)
-    @page < total_pages
+    @page < @total_pages()
   get_after: (data)->
-    @page_rows ||= data.per_page
-    @total_rows ||= data.total_pages
+    if @page_rows?
+      @page_rows = data.per_page
+      @total_rows = data.total_pages
     @after(data)
     @set_other()
-    @loading.recover()
+    if @node?
+      @loading.recover()
   set_other: ->
+    # alert(@total_pages())
+    if @total_pages() <= 1
+      @self.remove()
+      return
     p = $('.prev a', @self)
     n = $('.next a', @self)
     $('.current a', @self).text(@page)
@@ -83,4 +97,4 @@ $.fn.paginate.defaults =
   trigger: 'click'
   page_name: 'page'
   trigger_name: -> @trigger
-  after: ->
+  after: (msg)->
