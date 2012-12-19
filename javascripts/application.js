@@ -62,7 +62,7 @@
 
   util.loading.prototype = {
     recover: function() {
-      return this.target.removeClass('disabled').html(this.old);
+      return this.target.html(this.old);
     }
   };
 
@@ -593,13 +593,11 @@
       return false;
     },
     show: function() {
-      var scroll_h, source_padding, source_t, top;
+      var source_padding, top;
       this.body = this.get_content();
-      source_t = this.self.offset().top;
-      scroll_h = util.scroll().h;
       source_padding = (this.self.parent().outerHeight() - this.self.outerHeight()) / 2;
       top = this.self.outerHeight() + source_padding;
-      if (scroll_h / 2 < source_t) {
+      if (this.direction === "up") {
         top -= this.body.outerHeight(true) + this.self.outerHeight();
       }
       this.body.css({
@@ -634,7 +632,7 @@
 
   $.fn.menu.defaults = $.extend({}, $.fn.popup.defaults, {
     cache_key_suffix: "menu",
-    direction: "auto"
+    direction: "down"
   });
 
   $(document).on('click.menu', function() {
@@ -658,7 +656,7 @@
 
   _form.prototype = {
     go: function() {
-      var data, k, url, v,
+      var data, url,
         _this = this;
       this.form_tag = this.self.closest('form');
       if (this.self.is(this.except)) {
@@ -667,11 +665,8 @@
       this.before.call(this.self);
       this.loading = new util.loading(this.self);
       url = this.url();
-      data = this.fields();
-      for (k in data) {
-        v = data[k];
-        console.log(k, '=>', v);
-      }
+      data = this.form_tag.serialize();
+      console.log("ajax.data=", data);
       $.ajaxSetup({
         beforeSend: function(xhr) {
           var token;
@@ -689,33 +684,22 @@
       return false;
     },
     post_after: function(msg) {
+      if (this.reset != null) {
+        this.reset_after();
+      }
       this.loading.recover();
       return this.after.call(this.self, msg);
     },
-    fields: function() {
-      var data;
-      data = {};
-      this.field(data, 'input:hidden');
-      this.field(data, 'input:text');
-      this.field(data, 'input[type=email]');
-      this.field(data, 'input[type=password]');
-      this.field(data, 'select');
-      this.field(data, 'input:radio:checked');
-      this.field(data, 'textarea');
-      this.field(data, 'input:checkbox:checked');
-      return data;
-    },
-    field: function(data, selector) {
-      $(selector, this.form_tag).each(function() {
-        if (util.unempty(this.name)) {
-          if (data[this.name] != null) {
-            return data[this.name] += ',' + $(this).val();
-          } else {
-            return data[this.name] = $(this).val();
-          }
+    reset_after: function() {
+      return $(':input', this.form_tag).each(function() {
+        var tag, type;
+        type = this.type;
+        tag = this.tagName.toLowerCase();
+        if (tag === "textarea" || type === "text" || type === "email" || type === "password") {
+          this.value = "";
         }
+        return console.log('::::', type, ":::", tag);
       });
-      return data;
     },
     url: function() {
       return this.form_tag.attr('action') + this.url_suffix;
@@ -727,9 +711,10 @@
     option = $.extend({}, $.fn.form.defaults, option || {});
     binder = option.live ? "live" : "bind";
     this[binder](option.trigger_name(), function() {
-      return $(this).wrapData(option.cache_key_suffix, function() {
+      $(this).wrapData(option.cache_key_suffix, function() {
         return new _form(this, option);
       }).go();
+      return false;
     });
     return this;
   };
@@ -740,6 +725,7 @@
     trigger: 'click',
     except: ".active,.disabled",
     url_suffix: ".json",
+    reset: true,
     trigger_name: function() {
       return this.trigger + "." + this.cache_key_suffix;
     },
@@ -905,7 +891,7 @@
 (function() {
 
   jQuery(function() {
-    var input_label;
+    var input_label, text_area_blur, text_area_key_up;
     input_label = function() {
       var label;
       label = $(this).parent().prev();
@@ -915,21 +901,61 @@
         return label.hide();
       }
     };
+    text_area_key_up = function(event) {
+      var button;
+      event = event || window.event;
+      button = $(this).next();
+      if (event.keyCode === 13 && event.ctrlKey) {
+        button.click();
+      }
+      if (/^\s*$/.test(this.value)) {
+        if (!button.hasClass('disabled')) {
+          return button.addClass('disabled');
+        }
+      } else {
+        return button.removeClass('disabled');
+      }
+    };
+    text_area_blur = function() {
+      var mp, tag;
+      mp = $(this).parent();
+      tag = this.tagName.toLowerCase();
+      if (tag === "textarea") {
+        if (/^\s*$/.test($(this).val())) {
+          mp.parent().hide();
+          return mp.parent().prev().show();
+        }
+      } else {
+        mp.hide();
+        return mp.next().show();
+      }
+    };
     $('.js-menu').menu();
+    $('.form.small input').on('keyup', input_label);
     $('.js-paginate').paginate({
       after: function(data) {
         return $('#js-paginate-result').html(data.content);
       }
     });
-    $('.js-form').form({
+    $('.js-textarea').on('keyup', text_area_key_up).on('blur', text_area_blur);
+    $('.js-form-page').form({
       after: function(data) {
-        return $('#js-paginate-result').prepend(data.content);
+        $('#js-paginate-result').prepend(data.content);
+        return $('.js-textarea', $(this).parent()).blur();
       }
     });
-    $('.form.small input').on('keyup', input_label);
+    $('.js-form-nothing').form({
+      after: function(data) {
+        return $('.js-textarea', $(this).parent()).blur();
+      }
+    });
+    $('.js-form-simple input').on('focus', function() {
+      text_area_blur.call(this);
+      return $('.js-textarea', $(this).parent().next()).focus();
+    });
     setTimeout(function() {
       return $('.form.small input').each(input_label);
-    }, 1000);
+    }, 500);
     return false;
   });
 

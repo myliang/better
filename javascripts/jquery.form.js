@@ -12,7 +12,7 @@
 
   _form.prototype = {
     go: function() {
-      var data, k, url, v,
+      var data, url,
         _this = this;
       this.form_tag = this.self.closest('form');
       if (this.self.is(this.except)) {
@@ -21,11 +21,8 @@
       this.before.call(this.self);
       this.loading = new util.loading(this.self);
       url = this.url();
-      data = this.fields();
-      for (k in data) {
-        v = data[k];
-        console.log(k, '=>', v);
-      }
+      data = this.form_tag.serialize();
+      console.log("ajax.data=", data);
       $.ajaxSetup({
         beforeSend: function(xhr) {
           var token;
@@ -43,33 +40,22 @@
       return false;
     },
     post_after: function(msg) {
+      if (this.reset != null) {
+        this.reset_after();
+      }
       this.loading.recover();
       return this.after.call(this.self, msg);
     },
-    fields: function() {
-      var data;
-      data = {};
-      this.field(data, 'input:hidden');
-      this.field(data, 'input:text');
-      this.field(data, 'input[type=email]');
-      this.field(data, 'input[type=password]');
-      this.field(data, 'select');
-      this.field(data, 'input:radio:checked');
-      this.field(data, 'textarea');
-      this.field(data, 'input:checkbox:checked');
-      return data;
-    },
-    field: function(data, selector) {
-      $(selector, this.form_tag).each(function() {
-        if (util.unempty(this.name)) {
-          if (data[this.name] != null) {
-            return data[this.name] += ',' + $(this).val();
-          } else {
-            return data[this.name] = $(this).val();
-          }
+    reset_after: function() {
+      return $(':input', this.form_tag).each(function() {
+        var tag, type;
+        type = this.type;
+        tag = this.tagName.toLowerCase();
+        if (tag === "textarea" || type === "text" || type === "email" || type === "password") {
+          this.value = "";
         }
+        return console.log('::::', type, ":::", tag);
       });
-      return data;
     },
     url: function() {
       return this.form_tag.attr('action') + this.url_suffix;
@@ -81,9 +67,10 @@
     option = $.extend({}, $.fn.form.defaults, option || {});
     binder = option.live ? "live" : "bind";
     this[binder](option.trigger_name(), function() {
-      return $(this).wrapData(option.cache_key_suffix, function() {
+      $(this).wrapData(option.cache_key_suffix, function() {
         return new _form(this, option);
       }).go();
+      return false;
     });
     return this;
   };
@@ -94,6 +81,7 @@
     trigger: 'click',
     except: ".active,.disabled",
     url_suffix: ".json",
+    reset: true,
     trigger_name: function() {
       return this.trigger + "." + this.cache_key_suffix;
     },

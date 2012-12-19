@@ -61,7 +61,7 @@
 
   util.loading.prototype = {
     recover: function() {
-      return this.target.removeClass('disabled').html(this.old);
+      return this.target.html(this.old);
     }
   };
 

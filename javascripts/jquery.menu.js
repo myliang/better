@@ -29,13 +29,11 @@
       return false;
     },
     show: function() {
-      var scroll_h, source_padding, source_t, top;
+      var source_padding, top;
       this.body = this.get_content();
-      source_t = this.self.offset().top;
-      scroll_h = util.scroll().h;
       source_padding = (this.self.parent().outerHeight() - this.self.outerHeight()) / 2;
       top = this.self.outerHeight() + source_padding;
-      if (scroll_h / 2 < source_t) {
+      if (this.direction === "up") {
         top -= this.body.outerHeight(true) + this.self.outerHeight();
       }
       this.body.css({
@@ -70,7 +68,7 @@
 
   $.fn.menu.defaults = $.extend({}, $.fn.popup.defaults, {
     cache_key_suffix: "menu",
-    direction: "auto"
+    direction: "down"
   });
 
   $(document).on('click.menu', function() {

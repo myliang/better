@@ -38,7 +38,7 @@ util =
 
 util.loading:: =
   recover: ->
-    @target.removeClass('disabled').html(@old)
+    @target.html(@old)
 util.offset:: =
   arrow: (pos) ->
     ret = left: 0, top: 0, position: "absolute"

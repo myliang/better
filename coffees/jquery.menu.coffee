@@ -21,13 +21,12 @@ _menu:: =
     false
   show: ->
     @body = @get_content()
-    source_t = @self.offset().top
-    scroll_h = util.scroll().h
+    # source_t = @self.offset().top
+    # scroll_h = util.scroll().h
 
     source_padding = (@self.parent().outerHeight() - @self.outerHeight())/2
-
     top = @self.outerHeight() + source_padding
-    if(scroll_h / 2 < source_t)
+    if(@direction is "up")
       top -= @body.outerHeight(true) + @self.outerHeight()
 
     @body.css({top: top}).show()
@@ -52,7 +51,7 @@ $.fn.menu = (option)->
 
 $.fn.menu.defaults = $.extend({}, $.fn.popup.defaults, {
   cache_key_suffix: "menu"
-  direction: "auto"
+  direction: "down"
 })
 
 # bind html hide

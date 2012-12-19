@@ -2,7 +2,7 @@
 (function() {
 
   jQuery(function() {
-    var input_label;
+    var input_label, text_area_blur, text_area_key_up;
     input_label = function() {
       var label;
       label = $(this).parent().prev();
@@ -12,21 +12,61 @@
         return label.hide();
       }
     };
+    text_area_key_up = function(event) {
+      var button;
+      event = event || window.event;
+      button = $(this).next();
+      if (event.keyCode === 13 && event.ctrlKey) {
+        button.click();
+      }
+      if (/^\s*$/.test(this.value)) {
+        if (!button.hasClass('disabled')) {
+          return button.addClass('disabled');
+        }
+      } else {
+        return button.removeClass('disabled');
+      }
+    };
+    text_area_blur = function() {
+      var mp, tag;
+      mp = $(this).parent();
+      tag = this.tagName.toLowerCase();
+      if (tag === "textarea") {
+        if (/^\s*$/.test($(this).val())) {
+          mp.parent().hide();
+          return mp.parent().prev().show();
+        }
+      } else {
+        mp.hide();
+        return mp.next().show();
+      }
+    };
     $('.js-menu').menu();
+    $('.form.small input').on('keyup', input_label);
     $('.js-paginate').paginate({
       after: function(data) {
         return $('#js-paginate-result').html(data.content);
       }
     });
-    $('.js-form').form({
+    $('.js-textarea').on('keyup', text_area_key_up).on('blur', text_area_blur);
+    $('.js-form-page').form({
       after: function(data) {
-        return $('#js-paginate-result').prepend(data.content);
+        $('#js-paginate-result').prepend(data.content);
+        return $('.js-textarea', $(this).parent()).blur();
       }
     });
-    $('.form.small input').on('keyup', input_label);
+    $('.js-form-nothing').form({
+      after: function(data) {
+        return $('.js-textarea', $(this).parent()).blur();
+      }
+    });
+    $('.js-form-simple input').on('focus', function() {
+      text_area_blur.call(this);
+      return $('.js-textarea', $(this).parent().next()).focus();
+    });
     setTimeout(function() {
       return $('.form.small input').each(input_label);
-    }, 1000);
+    }, 500);
     return false;
   });
 
