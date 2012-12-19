@@ -29,6 +29,25 @@
   filter: progid:dximagetransform.microsoft.alpha(opacity=65);
 }
 
+/** .box_with_img(@margin_left: 60px, @padding: 9px 12px, @left: 5px){
+  .relative;
+
+  .box{
+    padding: @padding;
+    margin-left: @margin_left;
+    margin: 0;
+
+    >a >img{
+      .absolute;
+      left: @left;
+      width: @margin_left - 10;
+      border: none;
+      .border-radius(4px);
+    }
+  }
+
+}**/
+
 .before-after {
   display: inline-block;
   content: '';
@@ -413,7 +432,6 @@ h6 {
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0;
-  overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -456,8 +474,8 @@ h6 {
 
 .btn {
   display: inline-block;
+  min-height: 20px;
   padding: 4px 8px;
-  margin-right: 5px;
   overflow: hidden;
   font-size: 13px;
   font-weight: bold;
@@ -846,25 +864,26 @@ h6 {
 }
 
 .btn-group > .btn {
-  margin-right: 0;
-  margin-left: -1px;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
 }
 
 .btn-group .btn:first-child {
-  margin-left: 0;
   -webkit-border-radius: 2px 0 0 2px;
      -moz-border-radius: 2px 0 0 2px;
           border-radius: 2px 0 0 2px;
 }
 
-.btn-group .btn:last-child {
-  margin-right: 5px;
+.btn-group .btn:last-child,
+.btn-group .btn.last {
   -webkit-border-radius: 0 2px 2px 0;
      -moz-border-radius: 0 2px 2px 0;
           border-radius: 0 2px 2px 0;
+}
+
+.btn-group + .btn-group {
+  margin-left: 5px;
 }
 
 .page {
@@ -1113,7 +1132,7 @@ textarea {
 
 .form .fr .label {
   float: left;
-  width: 120px;
+  width: 100px;
   padding-top: 8px;
   color: #555555;
   text-align: right;
@@ -1127,7 +1146,7 @@ textarea {
 
 .form.small .fr .fd,
 .form.small .form-actions {
-  padding-left: 20px;
+  padding-left: 0;
 }
 
 .form.small .fr {
@@ -1137,13 +1156,13 @@ textarea {
 .form.small .fr .label {
   position: absolute;
   top: 2px;
-  left: 31px;
+  left: 11px;
   width: auto;
 }
 
 .form .form-actions,
 .form .fr .fd {
-  padding-left: 130px;
+  padding-left: 110px;
 }
 
 .form-actions {
@@ -1341,7 +1360,6 @@ textarea {
 .module.border,
 .items.border,
 .popup.border {
-  overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px;
@@ -1353,7 +1371,6 @@ textarea {
 }
 
 .nav.stacked {
-  overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px;

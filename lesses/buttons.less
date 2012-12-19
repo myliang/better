@@ -2,10 +2,9 @@
 .btn{
   cursor: pointer;
   .text-overflow;
-  margin-right: 5px;
-//  margin-bottom: 5px;
   padding: 4px 8px;
   line-height: @btn_line_height;
+  min-height: @btn_line_height;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
@@ -67,16 +66,15 @@
   .nowrap;
 
   >.btn{
-    margin-left: -1px;
-    margin-right: 0;
     .border-radius(0);
   }
-  .btn:first-child{
-    margin-left: 0;
+  .btn:first-child {
     .border-radius(@btn_border_radius 0 0 @btn_border_radius);
   }
-  .btn:last-child{
-    margin-right: 5px;
+  .btn:last-child, .btn.last {
     .border-radius(0 @btn_border_radius @btn_border_radius 0);
   }
+}
+.btn-group + .btn-group{
+  margin-left: 5px;
 }
