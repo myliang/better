@@ -130,6 +130,10 @@
   color: #555555;
 }
 
+.gray-light {
+  color: #999999;
+}
+
 .disabled,
 .disabled a,
 .disabled a:hover,
@@ -299,7 +303,7 @@ h6 {
 }
 
 .navbar .nav > li > a {
-  padding: 13px 12px 12px;
+  padding: 10px 12px;
   font-weight: bold;
   color: #999999;
 }
@@ -354,9 +358,10 @@ h6 {
 
 .nav > li > a {
   display: block;
-  padding: 10px 12px;
+  padding: 8px 12px;
   font-size: 13px;
   font-weight: normal;
+  line-height: 20px;
   color: #4183c4;
 }
 
@@ -369,7 +374,7 @@ h6 {
 }
 
 .nav.stretched > li > a {
-  padding: 6px 12px;
+  padding: 5px 10px;
   color: #555555;
 }
 
@@ -378,8 +383,9 @@ h6 {
 }
 
 .nav.pills.small > li > a {
-  padding: 5px 8px;
+  padding: 3px 8px;
   font-size: 11px;
+  line-height: 18px;
 }
 
 .nav.pills > li.active > a,
@@ -420,11 +426,13 @@ h6 {
   margin-bottom: -1px;
 }
 
-.nav.stacked {
+.nav.stacked,
+.nav.list {
   margin-bottom: 10px;
 }
 
-.nav.stacked > li {
+.nav.stacked > li,
+.nav.list > li {
   float: none;
 }
 
@@ -859,11 +867,6 @@ h6 {
 .btn.yellow .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-}
-
-.btn .caret {
-  margin-top: 6px;
-  margin-left: 0;
 }
 
 .btn-group {
@@ -1589,7 +1592,7 @@ textarea {
   display: inline-block;
   width: 0;
   height: 0;
-  margin-top: 5px;
+  margin-top: 7px;
   vertical-align: top;
   border-color: #222222;
   content: '';

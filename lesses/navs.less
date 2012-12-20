@@ -25,7 +25,7 @@
     >a{
       color: @gray_light;
       font-weight: bold;
-      padding: 13px 12px 12px;
+      padding: 10px 12px;
     }
     &.active > a, &.active >a:hover {
       .box-shadow(@nav_active_box_shadow);
@@ -57,9 +57,10 @@
     >a{
       .show;
       font-weight: normal;
-      padding: 10px 12px;
+      padding: 8px 12px;
       font-size: @base_font_size;
       color: @nav_link_color;
+      line-height: @nav_line_height;
 
       &:hover {
         text-decoration: none;
@@ -72,7 +73,7 @@
   overflow: hidden;
   >li{
     >a{
-      padding: 6px 12px;
+      padding: 5px 10px;
       color: @gray;
       strong{
         .show;
@@ -83,7 +84,8 @@
 
 .nav.pills{
   &.small >li >a{
-    padding: 5px 8px;
+    line-height: @nav_line_height - 2;
+    padding: 3px 8px;
     font-size: @base_font_size - 2;
   }
   >li{
@@ -115,17 +117,20 @@
     }
   }
 }
+
 .nav.tabs{
   padding: 0 5px;
   >li{
     margin-bottom: -1px;
   }
 }
-.nav.stacked{
-  margin-bottom: 10px;
+
+.nav.stacked, .nav.list{
   >li{
     float: none;
   }
+  margin-bottom: 10px;
+
 }
 
   
