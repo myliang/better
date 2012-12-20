@@ -32,7 +32,7 @@ jQuery ->
 
   # 
   $('.js-menu').menu()
-  $('.form.small input').on 'keyup', input_label
+  $('.form.small .fd > input').on 'keyup', input_label
   $('.js-paginate').paginate(after: (data)-> $('#js-paginate-result').html(data.content) )
   $('.js-textarea').on('keyup', text_area_key_up).on('blur', text_area_blur)
 
@@ -48,7 +48,7 @@ jQuery ->
     $('.js-textarea', $(@).parent().next()).focus()
 
   setTimeout ->
-    $('.form.small input').each(input_label)
+    $('.form.small .fd > input').each(input_label)
   , 500
 
 

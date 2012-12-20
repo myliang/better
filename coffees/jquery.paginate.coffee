@@ -44,24 +44,24 @@ _paginate:: =
     $.get(@url + @url_suffix, params, (data)=> @get_after(data))
       .error (data)=> @get_after(data)
     @
-  total_pages: ->
-    if @total_rows?
-      @total_rows/@page_rows + (@total_rows%@page_rows > 0 ? 1 : 0)
-    else 0
+  # total_pages: ->
+  #  if @total_rows?
+  #    @total_rows/@page_rows + (@total_rows%@page_rows > 0 ? 1 : 0)
+  #  else 0
   is_prev: -> @page > 1
   is_next: ->
-    @page < @total_pages()
+    @page < @total_pages
   get_after: (data)->
     if @page_rows?
       @page_rows = data.per_page
-      @total_rows = data.total_pages
+      @total_rows = data.total_entries
+      @total_pages = data.total_pages
     @after(data)
     @set_other()
     if @node?
       @loading.recover()
   set_other: ->
-    # alert(@total_pages())
-    if @total_pages() <= 1
+    if @total_pages <= 1
       @self.remove()
       return
     p = $('.prev a', @self)

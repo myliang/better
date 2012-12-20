@@ -71,26 +71,17 @@
       });
       return this;
     },
-    total_pages: function() {
-      var _ref;
-      if (this.total_rows != null) {
-        return this.total_rows / this.page_rows + ((_ref = this.total_rows % this.page_rows > 0) != null ? _ref : {
-          1: 0
-        });
-      } else {
-        return 0;
-      }
-    },
     is_prev: function() {
       return this.page > 1;
     },
     is_next: function() {
-      return this.page < this.total_pages();
+      return this.page < this.total_pages;
     },
     get_after: function(data) {
       if (this.page_rows != null) {
         this.page_rows = data.per_page;
-        this.total_rows = data.total_pages;
+        this.total_rows = data.total_entries;
+        this.total_pages = data.total_pages;
       }
       this.after(data);
       this.set_other();
@@ -100,7 +91,7 @@
     },
     set_other: function() {
       var n, p;
-      if (this.total_pages() <= 1) {
+      if (this.total_pages <= 1) {
         this.self.remove();
         return;
       }

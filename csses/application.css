@@ -122,6 +122,14 @@
   width: 120px;
 }
 
+.gray-dark {
+  color: #333333;
+}
+
+.gray {
+  color: #555555;
+}
+
 .disabled,
 .disabled a,
 .disabled a:hover,
@@ -432,6 +440,7 @@ h6 {
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0;
+  overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -1138,15 +1147,22 @@ textarea {
   text-align: right;
 }
 
+.form .fr .fd {
+  margin-left: 110px;
+}
+
+.form .form-actions {
+  padding-left: 110px;
+}
+
 .items .item .form .fr,
 .module .body .form .fr,
 .module .inner .form .fr {
   margin-top: 0;
 }
 
-.form.small .fr .fd,
 .form.small .form-actions {
-  padding-left: 0;
+  padding-left: 30px;
 }
 
 .form.small .fr {
@@ -1156,13 +1172,12 @@ textarea {
 .form.small .fr .label {
   position: absolute;
   top: 2px;
-  left: 11px;
+  left: 40px;
   width: auto;
 }
 
-.form .form-actions,
-.form .fr .fd {
-  padding-left: 110px;
+.form.small .fr .fd {
+  margin-left: 30px;
 }
 
 .form-actions {
@@ -1172,7 +1187,7 @@ textarea {
 }
 
 .form-actions a {
-  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .item .form {
@@ -1360,6 +1375,7 @@ textarea {
 .module.border,
 .items.border,
 .popup.border {
+  overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px;
@@ -1371,6 +1387,7 @@ textarea {
 }
 
 .nav.stacked {
+  overflow: hidden;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-border-radius: 4px;

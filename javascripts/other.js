@@ -42,7 +42,7 @@
       }
     };
     $('.js-menu').menu();
-    $('.form.small input').on('keyup', input_label);
+    $('.form.small .fd > input').on('keyup', input_label);
     $('.js-paginate').paginate({
       after: function(data) {
         return $('#js-paginate-result').html(data.content);
@@ -65,7 +65,7 @@
       return $('.js-textarea', $(this).parent().next()).focus();
     });
     setTimeout(function() {
-      return $('.form.small input').each(input_label);
+      return $('.form.small .fd > input').each(input_label);
     }, 500);
     return false;
   });
