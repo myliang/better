@@ -65,7 +65,7 @@
       var href, is_remove_if_hide;
       href = this.self.attr('href');
       if (typeof this.content === "function") {
-        return this.content();
+        return this.default_content(this.content.call(this.self));
       } else if (typeof this.content === "object" && (this.content != null)) {
         return this.content;
       } else if ((href != null) && href.length > 1 && href[0] === "#") {
@@ -78,7 +78,14 @@
     default_content: function() {
       var content, title;
       title = this.self.attr('data-title');
-      content = this.self.attr('data-content');
+      if (title == null) {
+        title = "提示信息";
+      }
+      if (arguments.length <= 0) {
+        content = this.self.attr('data-content');
+      } else {
+        content = arguments[0];
+      }
       if (title != null) {
         title = "<div class=\"header\">" + title + "<a href=\"#\" class=\"close\">&times</a></div>";
       } else {

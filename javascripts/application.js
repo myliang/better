@@ -276,7 +276,7 @@
       var href, is_remove_if_hide;
       href = this.self.attr('href');
       if (typeof this.content === "function") {
-        return this.content();
+        return this.default_content(this.content.call(this.self));
       } else if (typeof this.content === "object" && (this.content != null)) {
         return this.content;
       } else if ((href != null) && href.length > 1 && href[0] === "#") {
@@ -289,7 +289,14 @@
     default_content: function() {
       var content, title;
       title = this.self.attr('data-title');
-      content = this.self.attr('data-content');
+      if (title == null) {
+        title = "提示信息";
+      }
+      if (arguments.length <= 0) {
+        content = this.self.attr('data-content');
+      } else {
+        content = arguments[0];
+      }
       if (title != null) {
         title = "<div class=\"header\">" + title + "<a href=\"#\" class=\"close\">&times</a></div>";
       } else {
@@ -521,7 +528,14 @@
     return this;
   };
 
-  _tip.prototype = $.extend({}, $.fn.popup.constructor.prototype, {});
+  _tip.prototype = $.extend({}, $.fn.popup.constructor.prototype, {
+    get_content: function() {
+      var content, title;
+      title = this.self.attr('data-title');
+      content = $("<div style=\"display: none; max-width: " + this.max_width + "\">\n  <div class=\"tip\">\n    " + title + "\n  </div>\n</div>");
+      return content;
+    }
+  });
 
   $.fn.tip = function(option) {
     var binder, eventin, eventout;
@@ -552,13 +566,7 @@
     is_remove_if_hide: true,
     trigger: "hover",
     arrow_doc_class: "arrow-tip",
-    max_width: "260px",
-    content: function() {
-      var content, title;
-      title = this.self.attr('data-title');
-      content = $("<div style=\"display: none; max-width: " + this.max_width + "\">\n  <div class=\"tip\">\n    " + title + "\n  </div>\n</div>");
-      return content;
-    }
+    max_width: "260px"
   });
 
 }).call(this);
@@ -925,13 +933,13 @@
     $('.form.small .fd > input').on('keyup', input_label);
     $('.js-paginate').paginate({
       after: function(data) {
-        return $('#js-paginate-result').html(data.content);
+        return $('#js_paginate_result').html(data.content);
       }
     });
     $('.js-textarea').on('keyup', text_area_key_up).on('blur', text_area_blur);
     $('.js-form-page').form({
       after: function(data) {
-        $('#js-paginate-result').prepend(data.content);
+        $('#js_paginate_result').prepend(data.content);
         return $('.js-textarea', $(this).parent()).blur();
       }
     });
@@ -947,6 +955,22 @@
     setTimeout(function() {
       return $('.form.small .fd > input').each(input_label);
     }, 500);
+    $('a[rel=nofollow]').popup({
+      content: function() {
+        var buffer, href, method, token;
+        method = this.attr('data-method');
+        href = this.attr('href');
+        token = $('meta[name=csrf-token]').attr('content');
+        buffer = ['<form id="js_form_delete" method="post" action="', href, '">'];
+        buffer.push('<input name="utf8" type="hidden" value="&#x2713;" />');
+        buffer.push('<input name="authenticity_token" type="hidden" value="', token, '" />');
+        buffer.push('<input type="hidden" name="_method" value="', method, '"/>');
+        buffer.push('你确定要删除吗？');
+        buffer.push('<button type="button" class="btn red" onclick="$(\'#js_form_delete\').submit();">确定</button>');
+        buffer.push('</form>');
+        return buffer.join('');
+      }
+    });
     return false;
   });
 

@@ -47,7 +47,7 @@ _popup:: =
   get_content: ->
     href = @self.attr('href')
     if typeof(@content) == "function"
-      @content()
+      @default_content(@content.call(@self))
     else if typeof(@content) == "object" and @content?
       @content
     else if href? and href.length > 1 and href[0] is "#"
@@ -58,7 +58,12 @@ _popup:: =
 
   default_content: ->
     title = @self.attr('data-title')
-    content = @self.attr('data-content')
+    unless title?
+      title = "提示信息"
+    if arguments.length <= 0
+      content = @self.attr('data-content')
+    else
+      content = arguments[0]
 
     if title?
       title = """<div class="header">#{title}<a href="#" class="close">&times</a></div>"""

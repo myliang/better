@@ -9,7 +9,19 @@ _tip = (_self, option) ->
   @self = $(_self)
   @
 
-_tip:: = $.extend({}, $.fn.popup.constructor::, { })
+_tip:: = $.extend({}, $.fn.popup.constructor::, {
+  get_content: ->
+    title = @self.attr('data-title')
+
+    content = $("""
+      <div style="display: none; max-width: #{@max_width}">
+        <div class="tip">
+          #{title}
+        </div>
+      </div>
+    """)
+    content
+})
 
 $.fn.tip = (option) ->
   option = $.extend({}, $.fn.tip.defaults, option || {})
@@ -41,17 +53,6 @@ $.fn.tip.defaults = $.extend({}, $.fn.popup.defaults, {
   trigger: "hover"
   arrow_doc_class: "arrow-tip"
   max_width: "260px"
-  content: ->
-    title = @self.attr('data-title')
-
-    content = $("""
-      <div style="display: none; max-width: #{@max_width}">
-        <div class="tip">
-          #{title}
-        </div>
-      </div>
-    """)
-    content
 })
 
   # bind event

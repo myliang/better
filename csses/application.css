@@ -1207,7 +1207,7 @@ textarea {
 
 .arrow-tip,
 .arrow-popup {
-  z-index: 2000;
+  z-index: 200;
 }
 
 .arrow-popup.left:before {
@@ -1451,11 +1451,11 @@ textarea {
 .module > .footer,
 .module > .content,
 .items > .item {
-  padding: 12px 10px;
+  padding: 10px 12px;
 }
 
 .popup > .header {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   font-weight: bold;
   text-align: left;
@@ -1510,14 +1510,15 @@ textarea {
   color: #999999;
 }
 
-.content > .footer > * {
+.content > .footer span,
+.content > .footer a {
   display: inline-block;
   margin-right: 6px;
 }
 
 .item > .content,
 .module > .content {
-  min-height: 55px;
+  min-height: 58px;
   margin: 0;
   margin-left: 70px;
 }
@@ -1535,6 +1536,7 @@ textarea {
 
 .item > .content.small,
 .module > .content.small {
+  min-height: 48px;
   margin-left: 60px;
 }
 
@@ -1581,7 +1583,7 @@ textarea {
 }
 
 .popup .close {
-  padding: 10px 12px;
+  padding: 8px 12px;
 }
 
 .alert .close {

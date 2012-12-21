@@ -16,7 +16,14 @@
     return this;
   };
 
-  _tip.prototype = $.extend({}, $.fn.popup.constructor.prototype, {});
+  _tip.prototype = $.extend({}, $.fn.popup.constructor.prototype, {
+    get_content: function() {
+      var content, title;
+      title = this.self.attr('data-title');
+      content = $("<div style=\"display: none; max-width: " + this.max_width + "\">\n  <div class=\"tip\">\n    " + title + "\n  </div>\n</div>");
+      return content;
+    }
+  });
 
   $.fn.tip = function(option) {
     var binder, eventin, eventout;
@@ -47,13 +54,7 @@
     is_remove_if_hide: true,
     trigger: "hover",
     arrow_doc_class: "arrow-tip",
-    max_width: "260px",
-    content: function() {
-      var content, title;
-      title = this.self.attr('data-title');
-      content = $("<div style=\"display: none; max-width: " + this.max_width + "\">\n  <div class=\"tip\">\n    " + title + "\n  </div>\n</div>");
-      return content;
-    }
+    max_width: "260px"
   });
 
 }).call(this);
