@@ -2,8 +2,8 @@
 
 less_basepath="./lesses/"
 coffee_basepath="./coffees/"
-css_basepath="./csses/"
-js_basepath="./javascripts/"
+css_basepath="./doc/csses/"
+js_basepath="./doc/javascripts/"
 app_name="application"
 
 less_file="${less_basepath}${app_name}.less"
