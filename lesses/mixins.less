@@ -13,10 +13,10 @@
 }
 
 // ie7 inline-block
-//.ie7-inline-block{
-//  *display: inline;
-//  *zoom: 1;
-//}
+.ie7-inline-block{
+  *display: inline;
+  *zoom: 1;
+}
 
 // IE7 likes to collapse whitespace on either side of the inline-block elements.
 // Ems because we're attempting to match the width of a space character. Left
@@ -76,7 +76,8 @@
 //opacity
 .opacity(@v: 50){
   opacity: @v / 100;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=@v);
+  filter: alpha(opacity=@v);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=@v);
 }
 
 // border border-radius box-shadow backgroun-color

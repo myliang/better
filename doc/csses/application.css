@@ -12,6 +12,11 @@
   clear: both;
 }
 
+.ie7-inline-block {
+  *display: inline;
+  *zoom: 1;
+}
+
 .nowrap {
   white-space: nowrap;
 }
@@ -26,7 +31,8 @@
   cursor: default;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 /** .box_with_img(@margin_left: 60px, @padding: 9px 12px, @left: 5px){
@@ -71,6 +77,8 @@
 
 .inline-block {
   display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
 
 .relative {
@@ -87,8 +95,10 @@
 
 .help {
   display: inline-block;
+  *display: inline;
   padding-left: 5px;
   vertical-align: middle;
+  *zoom: 1;
 }
 
 .help.block {
@@ -154,7 +164,7 @@ input,
 textarea,
 select,
 button {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -491,6 +501,7 @@ h6 {
 
 .btn {
   display: inline-block;
+  *display: inline;
   min-height: 20px;
   padding: 4px 8px;
   overflow: hidden;
@@ -518,6 +529,7 @@ h6 {
      -moz-border-radius: 2px;
           border-radius: 2px;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5f6f7, endColorstr=#dddddd);
+  *zoom: 1;
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
@@ -543,7 +555,8 @@ h6 {
   background-color: #999;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.green {
@@ -584,7 +597,8 @@ h6 {
   background-color: #51823b;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.green .caret {
@@ -630,7 +644,8 @@ h6 {
   background-color: #405788;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.blue .caret {
@@ -676,7 +691,8 @@ h6 {
   background-color: #721c15;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.red .caret {
@@ -722,7 +738,8 @@ h6 {
   background-color: #9a284b;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.pink .caret {
@@ -768,7 +785,8 @@ h6 {
   background-color: #c67605;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.orange .caret {
@@ -814,7 +832,8 @@ h6 {
   background-color: #613591;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.purple .caret {
@@ -860,7 +879,8 @@ h6 {
   background-color: #d9a400;
   background-image: none;
   opacity: 0.65;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65);
+      filter: alpha(opacity=65);
 }
 
 .btn.yellow .caret {
@@ -870,8 +890,10 @@ h6 {
 
 .btn-group {
   display: inline-block;
+  *display: inline;
   white-space: nowrap;
   vertical-align: middle;
+  *zoom: 1;
 }
 
 .btn-group > .btn {
@@ -915,6 +937,8 @@ h6 {
 
 .page > li {
   display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
 
 .page > li.prev {
@@ -939,10 +963,12 @@ h6 {
 
 .page > li > a {
   display: inline-block;
+  *display: inline;
   padding: 5px 10px;
   font-weight: bold;
   background-color: #ffffff;
   border: 1px solid #dddddd;
+  *zoom: 1;
 }
 
 .page > li > a:hover {
@@ -951,6 +977,7 @@ h6 {
 
 .mark {
   display: inline-block;
+  *display: inline;
   padding: 2px 4px;
   font-size: 11px;
   font-weight: bold;
@@ -962,6 +989,7 @@ h6 {
   -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
           border-radius: 2px;
+  *zoom: 1;
 }
 
 .mark.blue {
@@ -1099,6 +1127,8 @@ textarea {
 .radio,
 .checkbox {
   display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
 
 .radio input,
@@ -1362,12 +1392,6 @@ textarea {
           border-radius: 2px;
 }
 
-.tip,
-.arrow-tip {
-  opacity: 0.9;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
-}
-
 .module,
 .items,
 .popup {
@@ -1400,11 +1424,11 @@ textarea {
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+.items > .item.last,
 .nav.tabs,
 .nav.stacked > li > a,
 .module > .header,
 .popup > .header,
-.items .items > .item:last-child,
 .items > .item {
   border-bottom: 1px solid #cccccc;
 }
@@ -1511,7 +1535,9 @@ textarea {
 .content > .footer span,
 .content > .footer a {
   display: inline-block;
+  *display: inline;
   margin-right: 6px;
+  *zoom: 1;
 }
 
 .item > .content,
@@ -1567,17 +1593,14 @@ textarea {
   font-size: 20px;
   font-weight: bold;
   line-height: 20px;
-  color: black;
+  color: #adadad;
   text-shadow: 0 1px 0 white;
   cursor: pointer;
-  opacity: 0.2;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
 }
 
 .close:hover {
+  color: #999999;
   text-decoration: none;
-  opacity: 0.4;
-  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=40);
 }
 
 .popup .close {

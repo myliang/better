@@ -32,7 +32,7 @@ $.fn.tip = (option) ->
   eventin = if option.trigger is "hover" then "mouseenter" else "foucs"
   eventout = if option.trigger is "hover" then "mouseleave" else "blur"
 
-  if option.trigger.indexOf "click"
+  if option.trigger.indexOf "click" is not -1
     @[binder](option.trigger_name(), ->
 #      console.log('::::::', @)
       get_tip(@, option).toggle()

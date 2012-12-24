@@ -1,7 +1,7 @@
 util =
   data: (_self, key, value_callback) ->
     cache = _self.data(key)
-    console.log(':::cache', key, cache)
+    # console.log(':::cache', key, cache)
     unless cache?
       cache = value_callback.call(_self)
       _self.data(key, cache)

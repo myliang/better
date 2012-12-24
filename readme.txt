@@ -10,6 +10,8 @@ npm install recess uglify-js jshint -g
 # compile a script : coffee -c a.coffee
 npm install -g coffee-script
 
+# support browers: ie8+, chrome, firefox
+
 # jquery tip
 # http://projects.nickstakenburg.com/tipped/documentation
 
