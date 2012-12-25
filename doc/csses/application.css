@@ -2,6 +2,7 @@
   font-family: 'Averia Gruesa Libre';
   font-style: normal;
   font-weight: 400;
+  src: url(/fonts/Averia/Averia-Gruesa.eot);
   src: local('Averia Gruesa Libre'), url(/fonts/Averia/Averia-Gruesa.ttf);
 }
 
@@ -185,7 +186,7 @@ input,
 textarea,
 select,
 button {
-  font-family: "Averia Gruesa Libre", STHeiti, "微软雅黑", "Microsoft Yahei", Helmet, Freesans, sans-serif;
+  font-family: "Averia Gruesa Libre", "微软雅黑", "Microsoft Yahei", Helmet, Freesans, sans-serif;
 }
 
 body {
