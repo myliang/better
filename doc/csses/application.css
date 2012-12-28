@@ -2,50 +2,51 @@
   font-family: 'Averia';
   font-style: normal;
   font-weight: bold;
-  src: local('Averia-Bold'), url('/fonts/Averia/Averia-Bold.ttf') format('truetype');
+  src: url('/fonts/Averia/Averia-Gruesa.ttf') format('truetype');
 }
 
-@font-face {
+/** @font-face {
   font-family: 'Averia';
-  font-style: italic;
+  src: url('/fonts/Averia/Averia-Bold.ttf') format('truetype');
   font-weight: bold;
-  src: local('Averia-BoldItalic'), url('/fonts/Averia/Averia-BoldItalic.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Averia Gruesa';
-  font-style: italic;
-  font-weight: normal;
-  src: local('Averia-Gruesa'), url('/fonts/Averia/Averia-Gruesa.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Averia';
-  font-style: italic;
-  font-weight: normal;
-  src: local('Averia-Italic'), url('/fonts/Averia/Averia-Italic.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Averia';
   font-style: normal;
-  font-weight: normal;
-  src: local('Averia-Light'), url('/fonts/Averia/Averia-Light.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Averia';
+  src: url('/fonts/Averia/Averia-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
   font-style: italic;
-  font-weight: normal;
-  src: local('Averia-LightItalic'), url('/fonts/Averia/Averia-LightItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Averia';
-  font-style: normal;
+  src: url('/fonts/Averia/Averia-Italic.ttf') format('truetype');
   font-weight: normal;
-  src: local('Averia-Regular'), url('/fonts/Averia/Averia-Regular.ttf') format('truetype');
+  font-style: italic;
 }
+
+@font-face {
+  font-family: 'Averia';
+  src: url('/fonts/Averia/Averia-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Averia';
+  src: url('/fonts/Averia/Averia-LightItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Averia';
+  src: url('/fonts/Averia/Averia-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+**/
 
 .clearfix {
   *zoom: 1;
@@ -160,6 +161,7 @@
   float: left;
   padding-top: 10px;
   margin-right: 10px;
+  font-family: "Averia";
   font-size: 18px;
   font-weight: bold;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
@@ -213,7 +215,7 @@ input,
 textarea,
 select,
 button {
-  font-family: "Averia Gruesa", sans-serif, "微软雅黑", "Microsoft Yahei", Helmet, Freesans;
+  font-family: sans-serif, "微软雅黑", "Microsoft Yahei", Helmet, Freesans;
   font-weight: normal;
 }
 
