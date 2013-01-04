@@ -488,14 +488,37 @@ h6 {
   margin-bottom: -1px;
 }
 
-.nav.stacked,
-.nav.list {
+.nav.stacked {
   margin-bottom: 10px;
 }
 
-.nav.stacked > li,
-.nav.list > li {
+.nav.stacked > li {
   float: none;
+}
+
+.nav-list {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.nav-list:before,
+.nav-list:after {
+  display: table;
+  content: "";
+}
+
+.nav-list:after {
+  clear: both;
+}
+
+.nav-list > li {
+  float: left;
+  min-width: 250px;
+  padding: 8px;
+  margin-bottom: -1px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: left;
 }
 
 .menu-outer {
@@ -1480,11 +1503,21 @@ textarea {
 
 .items > .item.last,
 .nav.tabs,
-.nav.stacked > li > a,
+.nav-list > li,
 .module > .header,
-.popup > .header,
-.items > .item {
+.popup > .header {
   border-bottom: 1px solid #cccccc;
+}
+
+.nav-list > li {
+  border-bottom-style: dashed;
+}
+
+.table th,
+.table td,
+.nav.stacked > li > a,
+.items > .item {
+  border-top: 1px solid #cccccc;
 }
 
 .nav.stretched {
@@ -1514,9 +1547,9 @@ textarea {
   border-bottom: 1px solid #cccccc;
 }
 
-.nav.stacked > li:last-child > a,
-.items > .item:last-child {
-  border-bottom: none;
+.nav.stacked > li:first-child > a,
+.items > .item:first-child {
+  border-top: none;
 }
 
 .popup > .header,
@@ -1688,4 +1721,37 @@ textarea {
   border-left: 5px solid transparent;
   border-bottom-style: solid;
   border-bottom-width: 5px;
+}
+
+table {
+  max-width: 100%;
+  font-size: 13px;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table {
+  width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  border-top: 1px solid #cccccc;
+}
+
+.table thead td {
+  font-weight: bold;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+  border-top: 0;
 }

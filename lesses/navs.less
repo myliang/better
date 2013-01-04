@@ -125,12 +125,26 @@
   }
 }
 
-.nav.stacked, .nav.list{
+.nav.stacked{
   >li{
     float: none;
   }
   margin-bottom: 10px;
 
+}
+
+.nav-list{
+  .clearfix;
+  overflow: hidden;
+  >li{
+    .pull-left;
+    padding: 8px;
+    line-height: @base_line_height;
+    text-align: left;
+    min-width: 250px;
+    margin-bottom: -1px;
+    font-size: @base_font_size - 1;
+  }
 }
 
   

@@ -1,0 +1,30 @@
+// tables less
+table{
+  max-width: 100%;
+  background-color: @table_background_color;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: @base_font_size;
+}
+
+.table{
+  width: 100%;
+  th, td{
+    padding: 8px;
+    line-height: @base_line_height;
+    text-align: left;
+  }
+  thead td{
+    font-weight: bold;
+  }
+
+  // Remove top border from thead by default
+  caption + thead tr:first-child th,
+  caption + thead tr:first-child td,
+  colgroup + thead tr:first-child th,
+  colgroup + thead tr:first-child td,
+  thead:first-child tr:first-child th,
+  thead:first-child tr:first-child td {
+    border-top: 0;
+  }
+}

@@ -11,11 +11,19 @@
 
 .items >.item.last,
 .nav.tabs,
-.nav.stacked >li >a,
+.nav-list >li,
 .module >.header,
-.popup >.header,
-.items >.item{
+.popup >.header{
   border-bottom: 1px solid @base_border_color;
+}
+.nav-list >li{
+  border-bottom-style: dashed;
+}
+
+.table th, .table td,
+.nav.stacked >li >a,
+.items >.item{
+  border-top: 1px solid @base_border_color;
 }
 
 .nav.stretched{
@@ -43,8 +51,8 @@
   }
 }
 
-.nav.stacked >li:last-child >a,
-.items >.item:last-child {
-  border-bottom: none;
+.nav.stacked >li:first-child >a,
+.items >.item:first-child {
+  border-top: none;
 }
 
