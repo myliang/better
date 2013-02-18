@@ -21,5 +21,5 @@ echo "" > ${js_basepath}${app_name}.js
 for js in ${jses[@]}; do
   # echo "filename = ${js_basepath}${js}.js"
   cat ${js_basepath}$js.js >> ${js_basepath}${app_name}.js
-  uglifyjs -nc ${js_basepath}$js.js >> ${js_basepath}${app_name}.min.js
+  uglifyjs --no-copyright ${js_basepath}$js.js >> ${js_basepath}${app_name}.min.js
 done

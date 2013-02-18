@@ -30,10 +30,10 @@ jQuery ->
       mp.hide()
       mp.next().show()
 
-  # 
+  #
   $('.js-menu').menu()
   $('.form.small .fd > input').on 'keyup', input_label
-  $('.js-paginate').paginate(after: (data)-> $('#js_paginate_result').html(data.content) )
+  $('.js-paginate').paginate(after: (je, data)-> je.prev().html(data.content) )
   $('.js-textarea').on('keyup', text_area_key_up).on('blur', text_area_blur)
 
   $('.js-form-page').form(after: (data)->

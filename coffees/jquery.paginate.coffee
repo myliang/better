@@ -56,7 +56,7 @@ _paginate:: =
       @page_rows = data.per_page
       @total_rows = data.total_entries
       @total_pages = data.total_pages
-    @after(data)
+    @after(@self, data)
     @set_other()
     if @node?
       @loading.recover()
@@ -97,4 +97,4 @@ $.fn.paginate.defaults =
   trigger: 'click'
   page_name: 'page'
   trigger_name: -> @trigger
-  after: (msg)->
+  after: (jel, msg)->

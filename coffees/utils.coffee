@@ -20,13 +20,13 @@ util =
     @source = arguments[0].offset()
     @source.w = arguments[0].outerWidth()
     @source.h = arguments[0].outerHeight()
-    @target = 
+    @target =
       w: arguments[1].width(), h: arguments[1].height()
       outer: {w: arguments[1].outerWidth(), h: arguments[1].outerHeight()}
-    @target.padding = 
+    @target.padding =
       w: @target.outer.w - @target.w
       h: @target.outer.h - @target.h
-      
+
 
     @arrow_size = arguments[2]
     @scroll = util.scroll()
@@ -110,7 +110,7 @@ util.offset:: =
     opt.position = "absolute"
     opt
 
-# window extends 
+# window extends
 window.util = util
 $ = jQuery
 
