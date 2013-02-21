@@ -12,7 +12,11 @@ _paginate = (_self, option)->
   if @self.attr('data-url')?
     @url = @self.attr('data-url')
 
-  if @url?
+  # @init_load = true
+  # if @self.attr('data-init-load')?
+  #   @init_load = @self.attr('data-init-load')
+
+  if @init_load
     @step(0)
 
   @
@@ -35,12 +39,23 @@ _paginate:: =
   prev: ->
     return unless @is_prev()
     @step(-1)
+  goto: (page)->
+    @page = page
+    @step(0)
   step: (offset)->
     @page += offset
     if @node?
       @loading = new util.loading(@node)
+      # if @node.attr('data-url')?
+      #   @url = @node.attr('data-url')
     params = {}
     params[@page_name] = @page
+    # urls = @url.split('?')
+    # if urls.length > 1
+    #   $.each(urls[1].split('&'), (index, ele)->
+    #     param_kv = ele.splilt('=')
+    #     params[param_kv[0]] = param_kv[1]
+    #   )
     $.get(@url + @url_suffix, params, (data)=> @get_after(data))
       .error (data)=> @get_after(data)
     @
@@ -54,7 +69,7 @@ _paginate:: =
   get_after: (data)->
     if @page_rows?
       @page_rows = data.per_page
-      @total_rows = data.total_entries
+      # @total_rows = data.total_entries
       @total_pages = data.total_pages
     @after(@self, data)
     @set_other()
@@ -82,9 +97,10 @@ _paginate:: =
 
 $.fn.paginate = (option)->
   option = $.extend({}, $.fn.paginate.defaults, option || {})
+  buf = []
   @each ->
-    $(@).wrapData(option.cache_key_suffix, -> new _paginate(@, option))
-  @
+    buf.push($(@).wrapData(option.cache_key_suffix, -> new _paginate(@, option)))
+  buf
 
 $.fn.paginate.defaults =
   url: null
@@ -97,4 +113,5 @@ $.fn.paginate.defaults =
   trigger: 'click'
   page_name: 'page'
   trigger_name: -> @trigger
+  init_load: true
   after: (jel, msg)->
