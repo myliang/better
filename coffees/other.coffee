@@ -33,7 +33,7 @@ jQuery ->
   #
   $('.js-menu').menu()
   $('.form.small .fd > input').on 'keyup', input_label
-  $('.js-paginate').paginate(after: (je, data)-> je.prev().html(data.content) )
+  $('.js-paginate').paginate(after: (je, data)-> je.parent().prev().html(data.content) )
   $('.js-textarea').on('keyup', text_area_key_up).on('blur', text_area_blur)
 
   $('.js-form-page').form(after: (data)->
